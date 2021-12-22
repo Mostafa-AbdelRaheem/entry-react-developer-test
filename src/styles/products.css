@@ -1,0 +1,27 @@
+.categoryContainer .productsHeaderContainer h1 {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 42px;
+}
+
+.categoryContainer .productsContainer {
+  display: grid;
+  place-items: center;
+}
+@media (max-width: 767px) {
+  .categoryContainer .productsContainer {
+    grid-template-columns: 1fr;
+  }
+}
+@media (min-width: 768px) {
+  .categoryContainer .productsContainer {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1170px) {
+  .categoryContainer .productsContainer {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
