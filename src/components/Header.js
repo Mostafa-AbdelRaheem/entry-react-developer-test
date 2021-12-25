@@ -9,6 +9,9 @@ import { connect } from 'react-redux';
 import {selectCurrency} from '../store/slices/currencySlice'
 import {getCategories,getCurrency} from '../queries/queries'
 import compose from 'recompose/compose';
+import Cart from './../pages/cart';
+import CartProduct from './CartProduct';
+import MyBag from './MyBag';
 
 
 
@@ -98,13 +101,14 @@ class Header extends React.Component {
                     ))}
                 </ul>
                  }
-                 {this.state.displayMyBag&&
-                    <div className='myBagContent'>
-                     </div>}
-                {this.state.displayMyBag&&
-                    <div className='myBagOverLay'>
-                        
-                    </div>}
+            {this.state.displayMyBag&&
+            <div className='myBagContent'>
+                <MyBag/>
+                </div>}
+            {this.state.displayMyBag&&
+            <div className='myBagOverLay'>
+                
+            </div>}
 
         </div>
         );

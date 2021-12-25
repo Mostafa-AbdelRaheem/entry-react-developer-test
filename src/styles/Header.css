@@ -51,11 +51,11 @@
   width: 32px;
   height: 30px;
   margin: 0 10px;
+  cursor: pointer;
 }
 
 .navbarContainer .rightSideContainer .usdImageContainer:hover {
-  color: var(--main-color);
-  cursor: pointer;
+  /* color: var(--main-color); */
 }
 
 .navbarContainer .rightSideContainer .usdImageContainer .faDollarSign {
@@ -90,7 +90,7 @@
 }
 
 .navbarContainer .currencyList li:hover {
-  background-color: var(--main-color);
+  background-color: black;
   color: white;
 }
 
@@ -100,12 +100,12 @@
   cursor: pointer;
 }
 
-.navbarContainer
+/* .navbarContainer
   .rightSideContainer
   .shoppingCartImageContainer:hover
   .faShoppingCart {
   color: var(--main-color);
-}
+} */
 
 .navbarContainer .myBagContent {
   position: absolute;

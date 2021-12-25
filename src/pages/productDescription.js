@@ -2,7 +2,9 @@ import React from 'react';
 import Header from './../components/Header';
 import {getProduct} from '../queries/queries'
 import { graphql } from '@apollo/client/react/hoc';
-import '../styles/productDescription.css'
+import '../styles/productDescription.css';
+import { connect } from 'react-redux';
+import {addToCart} from '../store/slices/cartSlice'
 
 
 class ProductDescription extends React.Component {
@@ -10,15 +12,26 @@ class ProductDescription extends React.Component {
         attribute:'',
         galleryPicUrl:''
     }
+
     hadnleGalleryDisplay=(picUrl)=>{this.setState({galleryPicUrl:picUrl})}
+
     handleAttribute=(itemId)=>{this.setState({attribute:itemId})}
 
+    handleAddToCart=(productProps,selectedAttribute)=>{
+        const dispatch = this.props.dispatch;
+        const {id,name,description,prices,attributes,gallery,brand}=productProps;
+        dispatch(addToCart({quantity:1,id,name,description,prices,attributes,selectedAttribute,gallery,brand}))
+        // attributes,brand,description,gallery,name,prices,id
+        console.log("Handle add to cart",productProps);
+        console.log("Handle add to cart name ",selectedAttribute);
+
+    }
     diplayProduct=()=>{
         const {data} =this.props
         if(data.loading){
             return(<h1>Product is loading</h1>)
         }else{
-        const {attributes,brand,description,gallery,name,prices}=this.props.data.product
+        const {attributes,brand,description,gallery,name,prices,id}=this.props.data.product
         return(
             <div className='productDecriptionContainer'>
                 {/* leftSide */}
@@ -45,7 +58,7 @@ class ProductDescription extends React.Component {
                         <h3>PRICE</h3>
                         <p className='price'><span className='symbol'>{prices[0].currency.symbol}</span>{prices[0].amount}</p>
                     </div>
-                    <button className='addToCartBtn'>ADD TO CART</button>
+                    <button onClick={()=>{this.handleAddToCart(this.props.data.product,this.state.attribute)}} className='addToCartBtn'>ADD TO CART</button>
                     <p className='description'>{description}</p>
                 </div>
             </div>
@@ -53,9 +66,10 @@ class ProductDescription extends React.Component {
 
         }
     }
+
     render() { 
         console.log("Product Decription Page",this.props)
-        console.log("Product Decription State Page",this.state)
+        // console.log("Product Decription State Page",this.state)
         // const {attributes,brand,description,gallery,name}=this.props.data.product
         // console.log("Product Decription ",brand)
         return (
@@ -68,28 +82,12 @@ class ProductDescription extends React.Component {
     }
 }
  
-export default graphql(getProduct,{
+export default connect()(graphql(getProduct,{
     options:(props)=>({
      variables:{
          "id":props.match.params.id
      }   
     })
-})(ProductDescription);
+})(ProductDescription));
 
 
-
-// products: Array(8)
-// 0:
-// brand: "Nike x Stussy"
-// description: "<p>Great sneakers for everyday use!</p>"
-// gallery: Array(5)
-// 0: "https://cdn.shopify.com/s/files/1/0087/6193/3920/products/DD1381200_DEOA_2_720x.jpg?v=1612816087"
-// 1: "https://cdn.shopify.com/s/files/1/0087/6193/3920/products/DD1381200_DEOA_1_720x.jpg?v=1612816087"
-// 2: "https://cdn.shopify.com/s/files/1/0087/6193/3920/products/DD1381200_DEOA_3_720x.jpg?v=1612816087"
-// 3: "https://cdn.shopify.com/s/files/1/0087/6193/3920/products/DD1381200_DEOA_5_720x.jpg?v=1612816087"
-// 4: "https://cdn.shopify.com/s/files/1/0087/6193/3920/products/DD1381200_DEOA_4_720x.jpg?v=1612816087"
-// length: 5
-// [[Prototype]]: Array(0)
-// id: "huarache-x-stussy-le"
-// inStock: true
-// name: "Nike Air Huarache 

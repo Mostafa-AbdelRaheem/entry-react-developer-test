@@ -1,0 +1,35 @@
+.myBagContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.myBagContainer .buttonsContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.myBagContainer .buttonsContainer .viewBagBtn {
+  background-color: white;
+  color: black;
+  border: solid 2px;
+  flex-basis: 45%;
+  width: 63px;
+  height: 45px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 45px;
+  cursor: pointer;
+}
+
+.myBagContainer .buttonsContainer .checkOutBtn {
+  flex-basis: 45%;
+  background-color: var(--main-color);
+  color: white;
+  border: solid 2px var(--main-color);
+  width: 63px;
+  height: 45px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 45px;
+  cursor: pointer;
+}

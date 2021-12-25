@@ -17,6 +17,7 @@ import {
   ApolloProvider,
 } from "@apollo/client";
 import configureStore  from './store/configureStore';
+import Cart from './pages/cart';
 
 
 //apollo client setup
@@ -41,6 +42,7 @@ class App extends React.Component {
                   <Route path="/all" component={All}/>
                   <Route path="/product/:id" component={ProductDescription}/>
                   <Route path="/category/:category" component={Category}/>
+                  <Route path="/cart" component={Cart}/>
                   <Route path="/" component={Home}/>
                 </Switch>
               </Router>
