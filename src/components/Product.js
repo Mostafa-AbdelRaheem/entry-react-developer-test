@@ -1,22 +1,34 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import {connect} from 'react-redux';
 
 class Product extends React.Component {
+    
+    toProduct=(categoryid)=>{
+        this.props.history.push(`/product/${categoryid}`);
+    }
+
     render() { 
-        // console.log("Product props",this.props)
-      const { gallery,inStock,name,prices}=this.props.product;
+        console.log("Product props",this.props)
+        const {currencyState}=this.props;
+        // console.log("currency state",this.props.currencyState)
+        // console.log("currency state varuiable",currencyState)
+
+        // onClick={()=>this.toProduct(this.props.data.categories[0].name)}
+      const { gallery,inStock,name,prices,id}=this.props.product;
         return (
         <div >
             <div className='imageContainer'>
                 <img src={gallery[0]} alt='' />
             </div>
             <div className='shoppingCartImageContainer'>
-                <FontAwesomeIcon className='faShoppingCart' icon={faShoppingCart} size="lg"/>
+                <FontAwesomeIcon  onClick={()=>this.toProduct(id)} className='faShoppingCart' icon={faShoppingCart} size="lg"/>
             </div>
             <div className='prductInfo'>
                     <p className='productName'>{name}</p>
-                    <p className='price'><span>{prices[0].currency.symbol}</span>{prices[0].amount}</p>
+                    <p className='price'><span>{prices[currencyState].currency.symbol}</span>{prices[currencyState].amount}</p>
             </div>
             {!inStock&&<div className='overlay'>
                 <p className='outOfStockText'>OUT OF STOCK</p>
@@ -26,4 +38,9 @@ class Product extends React.Component {
     }
 }
  
-export default Product;
+const mapStateToPtops=State=>({
+    currencyState:State.currency.currencyState
+})
+
+
+export default withRouter(connect(mapStateToPtops)(Product));

@@ -86,6 +86,7 @@
   font-size: 18px;
   line-height: 160%;
   text-align: center;
+  cursor: pointer;
 }
 
 .navbarContainer .currencyList li:hover {

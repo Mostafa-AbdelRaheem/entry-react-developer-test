@@ -1,0 +1,138 @@
+.productDecriptionContainer {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  height: 615px;
+}
+
+.productDecriptionContainer .galleryContainer {
+  display: flex;
+  flex-basis: 20%;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+.productDecriptionContainer .galleryContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.productDecriptionContainer .galleryContainer .imageContainer {
+  width: 119px;
+  height: 120px;
+  margin: 3px;
+  cursor: pointer;
+}
+
+.productDecriptionContainer .galleryContainer .imageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.productDecriptionContainer .mainImageContainer {
+  flex-basis: 35%;
+  height: 600px;
+}
+
+.productDecriptionContainer .mainImageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.productDecriptionContainer .info {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 35%;
+  height: 88vh;
+}
+
+.productDecriptionContainer .info .brandName h3 {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 27px;
+}
+
+.productDecriptionContainer .info .brandName p {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 27px;
+}
+
+.productDecriptionContainer .info .sizeContainer .sizeHeader {
+  font-family: Roboto Condensed;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 18px;
+}
+
+.productDecriptionContainer .info .sizeContainer .sizeList {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.productDecriptionContainer .info .sizeContainer .sizeList .sizeListItem {
+  margin: 10px;
+  background-color: white;
+  border: solid 2px;
+  width: 63px;
+  height: 45px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 45px;
+  cursor: pointer;
+}
+
+.productDecriptionContainer
+  .info
+  .sizeContainer
+  .sizeList
+  .sizeListItem.selected {
+  /* margin: 10px; */
+  background-color: black;
+  color: white;
+  /* border: solid 2px;
+  width: 63px;
+  height: 45px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 45px;
+  cursor: pointer; */
+}
+
+.productDecriptionContainer .info .priceContainer h3 {
+  font-family: Roboto Condensed;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 18px;
+}
+
+.productDecriptionContainer .info .priceContainer .price {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 18px;
+}
+
+.productDecriptionContainer .info .addToCartBtn {
+  background-color: var(--main-color);
+  color: white;
+  border: none;
+  width: 292px;
+  height: 52px;
+  cursor: pointer;
+}
+
+.productDecriptionContainer .info p {
+  max-width: 292px;
+  max-height: 103px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 159.96%;
+}

@@ -1,35 +1,40 @@
 import React from 'react';
-import StoreContext from '../context/storeContext';
-// import Products from '../components/Products';
-// import Header from '../components/Header';
+import Header from '../components/Header';
 import '../styles/product.css'
-// import {categories,products} from '../API/api'
+import {gql} from "@apollo/client";
+import { graphql } from '@apollo/client/react/hoc';
+import Products from '../components/Products';
 
-import { gql } from "@apollo/client";
-
-const categories = gql`
-query{
-categories{
-  name
+// query Categories($categoriesInput:CategoryInput){
+//   category(input: $categoriesInput){
+//     name
+//     products{
+//       name
+//     }
+//   }
+// }
+const allCategory=gql`
+query {
+  category{
+    name
+    products{
+      id
+      name
+    }
   }
 }
+`
 
-`;
 
 class All extends React.Component {
     render() { 
         return (
         <div>
-            <StoreContext.Consumer>
-                {StoreContext=>console.log(StoreContext.query({query: categories}).then(result => console.log(result.data)))}
-            </StoreContext.Consumer>
-            {/* <StoreContext.Consumer>
-            {StoreContext=><Products categoryProducts={StoreContext.allProducts} category={StoreContext.sotreCategories[0].toUpperCase()}/>}
-            </StoreContext.Consumer> */}
+            <Header/>
+            <h1>Hello from all category</h1>
         </div>
         );
     }
 }
  
-All.contextType= StoreContext
-export default All;
+export default graphql(allCategory)(All);

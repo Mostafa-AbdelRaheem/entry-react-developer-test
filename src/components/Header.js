@@ -1,9 +1,18 @@
 import React from 'react';
-import {NavLink,Redirect} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDollarSign,faShoppingCart,faChevronDown,faShoppingBag } from '@fortawesome/free-solid-svg-icons'
 import '../styles/Header.css';
-import StoreContext from '../context/storeContext';
+import {gql} from "@apollo/client";
+import { graphql } from '@apollo/client/react/hoc';
+import { connect } from 'react-redux';
+import {selectCurrency} from '../store/slices/currencySlice'
+import {getCategories,getCurrency} from '../queries/queries'
+import compose from 'recompose/compose';
+
+
+
+
 
 class Header extends React.Component {
     state={
@@ -14,21 +23,24 @@ class Header extends React.Component {
         displayMyBag:false,
     }
     
-    handleAllSelection=()=>{
+    handleAllSelection=(categoryName)=>{
+        this.props.history.push(`/category/${categoryName}`)
         this.setState({
             allLink:true,
             clothesLink:false,
             techLink:false
         })
     }
-    handleClothesSelection=()=>{
+    handleClothesSelection=(categoryName)=>{
+        this.props.history.push(`/category/${categoryName}`);
         this.setState({
             allLink:false,
             clothesLink:true,
             techLink:false
         })
     }
-    handleTechSelection=()=>{
+    handleTechSelection=(categoryName)=>{
+        this.props.history.push(`/category/${categoryName}`);
         this.setState({
             allLink:false,
             clothesLink:false,
@@ -40,27 +52,31 @@ class Header extends React.Component {
         {this.state.displayCurrency?this.setState({displayCurrency:false}):this.setState({displayCurrency:true})}
     }
     handledisplayMyBag=()=>{
-        console.log("hello from the bag")
         {this.state.displayMyBag?this.setState({displayMyBag:false}):this.setState({displayMyBag:true})}
     }
+    handleSelectCurrency=(currencyValue)=>{
+        const {dispatch} =this.props
+        console.log("Currency Value",currencyValue)
+        this.setState({displayMyBag:false})
+        dispatch(selectCurrency({currencyState:currencyValue}))
 
+    }
+    
     render() { 
+        console.log("header Props",this.props)
         return (
         <div className='navbarContainer'>
+
             <div className='LeftSideContainer'>
-                    <StoreContext.Consumer>
-                    {StoreContext=>
                     <div>
                         {
                         <ul className='categoryList'>
-                            <li onClick={this.handleAllSelection} className={`navbarLink ${this.state.allLink&&"navbarActiveLink"}`} ><NavLink className="link" to='/all'>{StoreContext.sotreCategories[0].toUpperCase()}</NavLink></li>
-                            <li onClick={this.handleClothesSelection} className={`navbarLink ${this.state.clothesLink&&"navbarActiveLink"}`}><NavLink className="link" to='/clothes'>{StoreContext.sotreCategories[1].toUpperCase()}</NavLink></li>
-                            <li onClick={this.handleTechSelection} className={`navbarLink ${this.state.techLink&&"navbarActiveLink"}`} ><NavLink className="link" to='/tech'>{StoreContext.sotreCategories[2].toUpperCase()}</NavLink></li>
+                            <li onClick={()=>this.handleAllSelection(this.props.getCategories.categories[0].name)} className={`navbarLink ${this.state.allLink&&"navbarActiveLink"}`} >All</li>
+                            <li onClick={()=>this.handleClothesSelection(this.props.getCategories.categories[1].name)} className={`navbarLink ${this.state.clothesLink&&"navbarActiveLink"}`}>Clothes</li>
+                            <li onClick={()=>this.handleTechSelection(this.props.getCategories.categories[2].name)} className={`navbarLink ${this.state.techLink&&"navbarActiveLink"}`} >Tech</li>
                         </ul>
                         }
                         </div>
-                    }
-                    </StoreContext.Consumer>
 
             </div>
             <div className='middleContainer'>
@@ -77,11 +93,9 @@ class Header extends React.Component {
             </div>
             {this.state.displayCurrency&& 
                 <ul className='currencyList'>
-                    <li><span>$</span>USD</li>
-                    <li><span>£</span>GBP</li>
-                    <li><span>A$</span>AUD</li>
-                    <li><span>¥</span>JPY</li>
-                    <li><span>₽</span>RUB</li>
+                    {this.props.getCurrency.currencies.map((currency,index)=>(
+                    <li onClick={()=>this.handleSelectCurrency(index)} key={index}><span>{currency.symbol}</span>{currency.label}</li>
+                    ))}
                 </ul>
                  }
                  {this.state.displayMyBag&&
@@ -97,6 +111,12 @@ class Header extends React.Component {
     }
 }
 
-Header.contextType= StoreContext
-export default Header;
+const mapStateToPtops=State=>({
+    currencyState:State.currency.currencyState
+})
+
+
+export default withRouter(connect(mapStateToPtops)(compose(
+    graphql(getCategories,{name:"getCategories"}),
+    graphql(getCurrency,{name:"getCurrency"}))(Header)));
 
