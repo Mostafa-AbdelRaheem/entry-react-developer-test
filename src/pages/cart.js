@@ -10,7 +10,7 @@ class Cart extends React.Component {
             <Header/>
             <h1>Cart</h1>
             {
-                this.props.cartItems.map((cartItem,index)=>(<div key={index}><CartProduct  cartItemProps={cartItem}/></div>))
+                this.props.cartItems.map((cartItem,index)=>(<div key={index}><CartProduct cartItemProps={cartItem}/></div>))
             }
 
         </div>

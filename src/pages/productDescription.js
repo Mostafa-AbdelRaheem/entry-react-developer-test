@@ -18,14 +18,17 @@ class ProductDescription extends React.Component {
     handleAttribute=(itemId)=>{this.setState({attribute:itemId})}
 
     handleAddToCart=(productProps,selectedAttribute)=>{
-        const dispatch = this.props.dispatch;
-        const {id,name,description,prices,attributes,gallery,brand}=productProps;
-        dispatch(addToCart({quantity:1,id,name,description,prices,attributes,selectedAttribute,gallery,brand}))
-        // attributes,brand,description,gallery,name,prices,id
-        console.log("Handle add to cart",productProps);
-        console.log("Handle add to cart name ",selectedAttribute);
-
+        if(!selectedAttribute){
+            alert("Please select an attribute")
+        }else{
+            const dispatch = this.props.dispatch;
+            const {id,name,description,prices,attributes,gallery,brand}=productProps;
+            dispatch(addToCart({quantity:1,id,productId:`${id}-${selectedAttribute}`,name,description,prices,attributes,selectedAttribute,gallery,brand}))
+            console.log("Handle add to cart",productProps);
+            console.log("Handle add to cart name ",selectedAttribute);
+        }
     }
+
     diplayProduct=()=>{
         const {data} =this.props
         if(data.loading){

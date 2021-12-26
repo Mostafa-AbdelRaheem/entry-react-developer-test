@@ -68,8 +68,9 @@ class Header extends React.Component {
     render() { 
         console.log("header Props",this.props)
         return (
-        <div className='navbarContainer'>
+            <div>
 
+        <div className='navbarContainer'>
             <div className='LeftSideContainer'>
                     <div>
                         {
@@ -105,11 +106,14 @@ class Header extends React.Component {
             <div className='myBagContent'>
                 <MyBag/>
                 </div>}
-            {this.state.displayMyBag&&
-            <div className='myBagOverLay'>
-                
-            </div>}
 
+
+
+            </div>
+                {this.state.displayMyBag&&
+                <div className='myBagOverLay'>
+                    
+                </div>}
         </div>
         );
     }

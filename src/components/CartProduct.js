@@ -1,9 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { addToCart,removeFromCart } from '../store/slices/cartSlice';
 import '../styles/cartProduct.css'
 
 
 class CartProduct extends React.Component {
+
+    handleAddToCart=(productProps)=>{
+
+            const dispatch = this.props.dispatch;
+            // const {id,selectedAttribute}=this.props.cartItemProps;
+            const {id,name,description,prices,attributes,gallery,brand,selectedAttribute,productId}=productProps;
+            dispatch(addToCart({quantity:1,id,name,description,prices,attributes,gallery,brand,selectedAttribute,productId}))
+            // console.log("Handle add to cart",productProps);
+            console.log("Handle add to cart name ",selectedAttribute);
+    }
+    
+    handleRemoveFromCart=(productProps)=>{
+        const dispatch = this.props.dispatch;
+        const {id,selectedAttribute,productId}=productProps;
+        dispatch(removeFromCart({id,selectedAttribute,productId}))
+    }
+
+
     render() { 
         console.log("CartProduct Comp.",this.props)
         const {currencyState}=this.props
@@ -29,9 +48,9 @@ class CartProduct extends React.Component {
                     {/* RightSide */}
                     <div className='visualContainer'>
                         <div className='counterContainer'>
-                            <button className='counterBtn'>+</button>
+                            <button onClick={()=>{this.handleAddToCart(this.props.cartItemProps)}}className='counterBtn'>+</button>
                             <p className='quantity'>{quantity}</p>
-                            <button className='counterBtn'>-</button>
+                            <button onClick={()=>{this.handleRemoveFromCart(this.props.cartItemProps)}} className='counterBtn'>-</button>
                         </div>
                         <div className='mainImageContainer'>
                             <img src={gallery[0]}/>
@@ -46,12 +65,5 @@ function mapStateToPtops(state){
         currencyState:state.currency.currencyState
     }
 }
-// const mapStateToPtops=State=>({
-//     return({
-
-//         currencyState:State.currency.currencyState
-//     })
-// }
-// )
  
 export default connect(mapStateToPtops)(CartProduct);

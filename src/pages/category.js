@@ -25,7 +25,7 @@ class Category extends React.Component {
         // console.log("Category page",this.props)
         const {category}=this.props.match.params;
         return (
-        <div className='categoryContainer'>
+        <div className='appContainer categoryContainer'>
             <Header/>
             <div className='productsHeaderContainer'>
                 <h1>{category.toUpperCase()}</h1>

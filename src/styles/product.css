@@ -1,3 +1,7 @@
+.productsContainer {
+  min-width: 920px;
+  padding: 0 40px;
+}
 .productsContainer .productContainer {
   position: relative;
   display: flex;
@@ -12,6 +16,9 @@
   transition-delay: 0.2s;
 }
 
+.productsContainer {
+  margin: 0 auto;
+}
 .productsContainer .productContainer:hover {
   box-shadow: 0 8px 20px 0 rgb(0 0 0 / 12%);
   transition: all 0.2s linear;

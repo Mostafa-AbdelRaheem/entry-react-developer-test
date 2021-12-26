@@ -5,22 +5,22 @@
 .appContainer {
   margin: auto;
 }
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .appContainer {
     width: 750;
   }
-}
+} */
 
 /* Medium */
-@media (min-width: 992px) {
+/* @media (min-width: 992px) {
   .appContainer {
     width: 970;
   }
-}
+} */
 
 /* Large */
-@media (min-width: 1200px) {
+/* @media (min-width: 1200px) {
   .appContainer {
     width: 1170px;
   }
-}
+} */

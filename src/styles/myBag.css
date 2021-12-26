@@ -1,6 +1,118 @@
 .myBagContainer {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  padding: 5px;
+  width: 325px;
+  height: 540px;
+}
+
+.myBagContainer h3 {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+}
+.myBagContainer .cartProductContainer .infoContainer .brandName h3 {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 0px;
+}
+
+.myBagContainer .cartProductContainer .infoContainer .brandName p {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 0px;
+}
+
+.myBagContainer .cartProductContainer .infoContainer .priceContainer .price {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 0px;
+}
+
+.myBagContainer
+  .cartProductContainer
+  .infoContainer
+  .sizeContainer
+  .sizeList
+  .sizeListItem {
+  margin-right: 10px;
+  background-color: white;
+  border: solid 2px;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 24px;
+  cursor: pointer;
+  font-size: 10px;
+}
+
+.myBagContainer
+  .cartProductContainer
+  .infoContainer
+  .sizeContainer
+  .sizeList
+  .sizeListItem.selected {
+  background-color: black;
+  border: solid 2px;
+  color: white;
+}
+
+.myBagContainer
+  .cartProductContainer
+  .visualContainer
+  .counterContainer
+  .counterBtn {
+  border: 1px solid #1d1f22;
+  width: 24px;
+  height: 24px;
+  background-color: white;
+  font-size: 16px;
+  font-weight: lighter;
+  cursor: pointer;
+}
+
+.myBagContainer
+  .cartProductContainer
+  .visualContainer
+  .counterContainer
+  .quantity {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+}
+.myBagContainer .cartProductContainer .visualContainer .mainImageContainer {
+  width: 105px;
+  height: 137px;
+}
+
+.myBagContainer .productsListContainer {
+  display: flex;
+  flex-direction: column;
+  width: 293px;
+  height: 300px;
+  overflow-y: scroll;
+}
+
+.myBagContainer .productsListContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.myBagContainer .productsListContainer .productContainer {
+  width: 293px;
+}
+
+.myBagContainer .totalCost {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
 }
 
 .myBagContainer .buttonsContainer {
