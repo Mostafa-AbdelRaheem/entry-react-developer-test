@@ -13,7 +13,7 @@ class CartProduct extends React.Component {
             const {id,name,description,prices,attributes,gallery,brand,selectedAttribute,productId}=productProps;
             dispatch(addToCart({quantity:1,id,name,description,prices,attributes,gallery,brand,selectedAttribute,productId}))
             // console.log("Handle add to cart",productProps);
-            console.log("Handle add to cart name ",selectedAttribute);
+            // console.log("Handle add to cart name ",selectedAttribute);
     }
     
     handleRemoveFromCart=(productProps)=>{
@@ -24,7 +24,7 @@ class CartProduct extends React.Component {
 
 
     render() { 
-        console.log("CartProduct Comp.",this.props)
+        // console.log("CartProduct Comp.",this.props)
         const {currencyState}=this.props
         const {attributes,brand,description,gallery,name,prices,id,selectedAttribute,quantity}=this.props.cartItemProps
         return (

@@ -3,6 +3,7 @@ import {withRouter} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import {connect} from 'react-redux';
+import '../styles/product.css'
 
 class Product extends React.Component {
     
@@ -11,12 +12,8 @@ class Product extends React.Component {
     }
 
     render() { 
-        console.log("Product props",this.props)
+        // console.log("Product props",this.props)
         const {currencyState}=this.props;
-        // console.log("currency state",this.props.currencyState)
-        // console.log("currency state varuiable",currencyState)
-
-        // onClick={()=>this.toProduct(this.props.data.categories[0].name)}
       const { gallery,inStock,name,prices,id}=this.props.product;
         return (
         <div >

@@ -1,13 +1,11 @@
 import React from 'react';
 import Home from './pages/Home';
-import './App.css';
 import { BrowserRouter as Router,Switch,Route } from 'react-router-dom';
-import All from './pages/all';
-import Tech from './pages/tech';
 import Category from './pages/category';
 import ProductDescription from './pages/productDescription'
 import Header from './components/Header';
 import { Provider } from 'react-redux';
+import './App.css';
 
 
 
@@ -36,10 +34,8 @@ class App extends React.Component {
           <Provider store={store}>
             <ApolloProvider client={client}>
               <Router>
-                {/* <Header/> */}
+                <Header/>
                 <Switch>
-                  <Route path="/tech" component={Tech}/>
-                  <Route path="/all" component={All}/>
                   <Route path="/product/:id" component={ProductDescription}/>
                   <Route path="/category/:category" component={Category}/>
                   <Route path="/cart" component={Cart}/>

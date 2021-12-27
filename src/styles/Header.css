@@ -4,8 +4,9 @@
   justify-content: space-between;
   align-items: center;
   height: 60px;
-  min-width: 920px;
-  padding: 0 40px;
+  max-width: 1420px;
+  /* padding: 0 40px; */
+  margin: 0 auto;
 }
 
 .navbarContainer .LeftSideContainer .categoryList {
@@ -38,6 +39,7 @@
 .navbarContainer .middleContainer {
   width: 32px;
   height: 30px;
+  cursor: pointer;
 }
 
 .navbarContainer .middleContainer .faShoppingBag {
@@ -54,10 +56,6 @@
   height: 30px;
   margin: 0 10px;
   cursor: pointer;
-}
-
-.navbarContainer .rightSideContainer .usdImageContainer:hover {
-  /* color: var(--main-color); */
 }
 
 .navbarContainer .rightSideContainer .usdImageContainer .faDollarSign {
@@ -97,9 +95,28 @@
 }
 
 .navbarContainer .rightSideContainer .shoppingCartImageContainer {
+  position: relative;
   width: 32px;
   height: 30px;
   cursor: pointer;
+}
+.navbarContainer
+  .rightSideContainer
+  .shoppingCartImageContainer
+  .cartItemsNumber {
+  position: absolute;
+  color: white;
+  background-color: black;
+  width: 15px;
+  height: 15px;
+  border-radius: 8px;
+  right: 1px;
+  top: -5px;
+  font-family: Roboto;
+  text-align: center;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
 }
 
 /* .navbarContainer

@@ -1,10 +1,9 @@
 import React from 'react';
-import Header from './../components/Header';
 import {getProduct} from '../queries/queries'
 import { graphql } from '@apollo/client/react/hoc';
-import '../styles/productDescription.css';
 import { connect } from 'react-redux';
 import {addToCart} from '../store/slices/cartSlice'
+import '../styles/productDescription.css';
 
 
 class ProductDescription extends React.Component {
@@ -71,13 +70,13 @@ class ProductDescription extends React.Component {
     }
 
     render() { 
-        console.log("Product Decription Page",this.props)
+        // console.log("Product Decription Page",this.props)
         // console.log("Product Decription State Page",this.state)
         // const {attributes,brand,description,gallery,name}=this.props.data.product
         // console.log("Product Decription ",brand)
         return (
         <div className='ProductDescriptionContainer'>
-            <Header/>
+
             {this.diplayProduct()}
 
         </div>

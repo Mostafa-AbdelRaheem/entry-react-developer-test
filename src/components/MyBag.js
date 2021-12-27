@@ -29,7 +29,7 @@ class MyBag extends React.Component {
         }
     }
     render() { 
-        console.log("MyBag",this.props)
+        // console.log("MyBag",this.props)
         return (
         <div className='myBagContainer'>
             <h3>My Bag, <span>{this.props.cartItems.length}</span> items</h3>

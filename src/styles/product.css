@@ -1,6 +1,6 @@
 .productsContainer {
   min-width: 920px;
-  padding: 0 40px;
+  /* padding: 0 40px; */
 }
 .productsContainer .productContainer {
   position: relative;

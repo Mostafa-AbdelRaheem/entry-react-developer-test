@@ -1,13 +1,13 @@
 import React from 'react';
-import Header from '../components/Header';
 import Product from '../components/Product';
 import { graphql } from '@apollo/client/react/hoc';
 import {getProducts} from '../queries/queries'
+import '../styles/category.css'
 
 
 class Category extends React.Component {
     displayProducts=()=>{
-        const {data}=this.props;//there is an issue you can use data use the main this.props
+        const data=this.props.data;//there is an issue you can use data use the main this.props
         // console.log("Display Productsssss",data)
         if(data.loading){
             return(<h1>Loading Data ....</h1>)
@@ -22,11 +22,10 @@ class Category extends React.Component {
 
 
     render() { 
-        // console.log("Category page",this.props)
+        console.log("Category page",this.props)
         const {category}=this.props.match.params;
         return (
-        <div className='appContainer categoryContainer'>
-            <Header/>
+        <div className='categoryContainer'>
             <div className='productsHeaderContainer'>
                 <h1>{category.toUpperCase()}</h1>
             </div>
