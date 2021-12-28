@@ -95,6 +95,7 @@
   width: 114px;
   box-shadow: 0 8px 20px 0 rgb(0 0 0 / 12%);
   list-style-type: none;
+  z-index: 10;
 }
 
 .navbarContainer .currencyList li {

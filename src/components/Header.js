@@ -23,8 +23,7 @@ class Header extends React.Component {
     }
 
     handleClothesSelection=(categoryName)=>{
-        this.props.history.push(`/categories/${categoryName}`);
-        
+        this.props.history.push(`/categories/${categoryName}`);   
     }
 
     handleTechSelection=(categoryName)=>{
@@ -41,6 +40,11 @@ class Header extends React.Component {
 
     handledisplayMyBag=()=>{
         {this.state.displayMyBag?this.setState({displayMyBag:false}):this.setState({displayMyBag:true})}
+    // {this.setState({displayMyBag:true})}
+    }
+
+    handleMyBagOutsideClick=()=>{
+        this.setState({displayMyBag:false})
     }
 
     handleSelectCurrency=(currencyValue)=>{
@@ -52,7 +56,7 @@ class Header extends React.Component {
     
     render() { 
         console.log("header Props",this.props)
-        console.log("params ",this.props.match.path)
+        console.log("state ",this.state)
         const pathname=this.props.location.pathname
         return (
             <div>
@@ -94,7 +98,7 @@ class Header extends React.Component {
                  }
             {this.state.displayMyBag&&
             <div className='myBagContent'>
-                <MyBag/>
+                <MyBag   onOutsideClick={this.handleMyBagOutsideClick}/>
                 </div>}
 
 

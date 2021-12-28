@@ -1,12 +1,29 @@
-import React from 'react';
+import React,{ createRef } from 'react';
 import CartProduct from './CartProduct';
 import { withRouter } from 'react-router-dom';
 import '../styles/myBag.css'
 import { connect } from 'react-redux';
 
 class MyBag extends React.Component {
+    wrapperRef = createRef();
+    componentDidMount() {
+        document
+          .addEventListener('mousedown', this.handleClickOutside);
+      }
+    
+      componentWillUnmount(){
+        document
+          .removeEventListener('mousedown', this.handleClickOutside);
+      }
+      handleClickOutside = (event) => {
+        if (this.wrapperRef.current &&!this.wrapperRef.current.contains(event.target)) {
+            this.props.onOutsideClick();
+          }
+      }
+
     handleToCartPage=()=>{
         this.props.history.push(`/cart`);
+        this.props.onOutsideClick();
     }
     displayCart=()=>{
         if(this.props.cartItems.length){
@@ -31,7 +48,7 @@ class MyBag extends React.Component {
     render() { 
         // console.log("MyBag",this.props)
         return (
-        <div className='myBagContainer'>
+        <div ref={this.wrapperRef} className='myBagContainer'>
             <h3>My Bag, <span>{this.props.cartItems.length}</span> items</h3>
             <div className='productsListContainer'>
             {this.displayCart()}
