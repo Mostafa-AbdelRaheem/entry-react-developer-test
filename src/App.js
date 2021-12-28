@@ -1,9 +1,10 @@
 import React from 'react';
 import Home from './pages/Home';
-import { BrowserRouter as Router,Switch,Route } from 'react-router-dom';
+import { BrowserRouter as Router,Switch,Route,Redirect } from 'react-router-dom';
 import Category from './pages/category';
 import ProductDescription from './pages/productDescription'
 import Header from './components/Header';
+import NotFound from './pages/notFound';
 import { Provider } from 'react-redux';
 import './App.css';
 
@@ -36,10 +37,12 @@ class App extends React.Component {
               <Router>
                 <Header/>
                 <Switch>
-                  <Route path="/product/:id" component={ProductDescription}/>
-                  <Route path="/category/:category" component={Category}/>
-                  <Route path="/cart" component={Cart}/>
-                  <Route path="/" component={Home}/>
+                  <Route exact path="/product/:id" component={ProductDescription}/>
+                  <Route exact path="/categories/:category" component={Category}/>
+                  <Route exact path="/cart" component={Cart}/>
+                  <Route path="/not-found" component={NotFound}/>
+                  <Redirect exact from='/' to="/categories/all"/>
+                  <Redirect to="/not-found"/>
                 </Switch>
               </Router>
             </ApolloProvider>         

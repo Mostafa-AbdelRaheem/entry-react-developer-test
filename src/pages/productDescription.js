@@ -23,9 +23,47 @@ class ProductDescription extends React.Component {
             const dispatch = this.props.dispatch;
             const {id,name,description,prices,attributes,gallery,brand}=productProps;
             dispatch(addToCart({quantity:1,id,productId:`${id}-${selectedAttribute}`,name,description,prices,attributes,selectedAttribute,gallery,brand}))
-            console.log("Handle add to cart",productProps);
-            console.log("Handle add to cart name ",selectedAttribute);
+            // console.log("Handle add to cart",productProps);
+            // console.log("Handle add to cart name ",selectedAttribute);
         }
+    }
+
+    handleAttributeproblems=(attributes)=>{
+        if(attributes.length!==0){
+            for (let items of attributes){
+                if(items.items[0].value.charAt(0)==="#"){
+                    return(
+                        <div className='sizeContainer'>
+                            <p className='sizeHeader'>COLOR:</p>
+                            <ul className='sizeList'>
+                                {items.items.map((attribute)=>(<li  style={{backgroundColor:`${attribute.value}`}} className={`${'sizeListItem'}`} key={attribute.id}></li>))}
+                                {/* {items.items.map((attribute)=>{<li className={`${'sizeListItem'}`} key={attribute.id}>{attribute.displayValue}</li>})} */}
+                            </ul>
+                        </div>
+                    )
+                }else{
+                    return(                    
+                    <div className='sizeContainer'>
+                        <p className='sizeHeader'>SIZE:</p>
+                        <ul className='sizeList'>                        
+                            {items.items.map((attribute)=>(<li  style={{backgroundColor:`${attribute.value}`}} className={`${this.state.attribute===attribute.id?'sizeListItem selected':'sizeListItem'}`} key={attribute.id}>{attribute.displayValue}</li>))} 
+                            {/* { attributes[0].items.map((item)=>(<li className={`${this.state.attribute===item.id?'sizeListItem selected':'sizeListItem'}`} onClick={()=>this.handleAttribute(item.id)} key={item.id}>{item.value}</li>))} */}
+                        </ul>    
+                    </div>
+                    )
+                }
+            }
+        }
+
+
+            //     if(items.items[0].value.charAt(0)==="#"){
+            //         console.log(items.items.map((attribute)=>{console.log("this is a color")}))
+            //         // console.log("hello",items.items[0].value.charAt(0))
+            //     }
+            //     // sentence.charAt(index)
+            //     console.log(items.items.map((attribute)=>{console.log( attribute.displayValue)}))
+            // //    return <div>{item[0]}</div>
+        // return console.log(item)
     }
 
     diplayProduct=()=>{
@@ -50,12 +88,8 @@ class ProductDescription extends React.Component {
                         <h3>{brand}</h3>
                         <p>{name}</p>
                     </div>
-                    <div className='sizeContainer'>
-                        <p className='sizeHeader'>SIZE:</p>
-                        <ul className='sizeList'>
-                            {attributes[0].items.map((item)=>(<li className={`${this.state.attribute===item.id?'sizeListItem selected':'sizeListItem'}`} onClick={()=>this.handleAttribute(item.id)} key={item.id}>{item.value}</li>))}
-                        </ul>
-                    </div>
+                        {this.handleAttributeproblems(attributes)}
+                        
                     <div className='priceContainer'>
                         <h3>PRICE</h3>
                         <p className='price'><span className='symbol'>{prices[0].currency.symbol}</span>{prices[0].amount}</p>

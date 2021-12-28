@@ -1,7 +1,5 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDollarSign,faShoppingCart,faChevronDown,faShoppingBag } from '@fortawesome/free-solid-svg-icons'
 import { graphql } from '@apollo/client/react/hoc';
 import { connect } from 'react-redux';
 import {selectCurrency} from '../store/slices/currencySlice'
@@ -21,15 +19,16 @@ class Header extends React.Component {
     }
     
     handleAllSelection=(categoryName)=>{
-        this.props.history.push(`/category/${categoryName}`)
+        this.props.history.push(`/categories/${categoryName}`)
     }
 
     handleClothesSelection=(categoryName)=>{
-        this.props.history.push(`/category/${categoryName}`);
+        this.props.history.push(`/categories/${categoryName}`);
+        
     }
 
     handleTechSelection=(categoryName)=>{
-        this.props.history.push(`/category/${categoryName}`);
+        this.props.history.push(`/categories/${categoryName}`);
     }
 
     toHomePage=()=>{
@@ -52,7 +51,8 @@ class Header extends React.Component {
     }
     
     render() { 
-        // console.log("header Props",this.props)
+        console.log("header Props",this.props)
+        console.log("params ",this.props.match.path)
         const pathname=this.props.location.pathname
         return (
             <div>
@@ -62,25 +62,27 @@ class Header extends React.Component {
                     <div>
                         {
                         <ul className='categoryList'>
-                            <li onClick={()=>this.handleAllSelection(this.props.getCategories.categories[0].name)} className={`navbarLink ${((pathname==="/category/all")||(pathname==="/")?true:false)&&"navbarActiveLink"}`} >All</li>
-                            <li onClick={()=>this.handleClothesSelection(this.props.getCategories.categories[1].name)} className={`navbarLink ${(pathname==="/category/clothes"?true:false)&&"navbarActiveLink"}`}>Clothes</li>
-                            <li onClick={()=>this.handleTechSelection(this.props.getCategories.categories[2].name)} className={`navbarLink ${(pathname==="/category/tech"?true:false)&&"navbarActiveLink"}`} >Tech</li>
+                            <li onClick={()=>this.handleAllSelection(this.props.getCategories.categories[0].name)} className={`navbarLink ${((pathname==="/categories/all")||(pathname==="/")?true:false)&&"navbarActiveLink"}`} >All</li>
+                            <li onClick={()=>this.handleClothesSelection(this.props.getCategories.categories[1].name)} className={`navbarLink ${(pathname==="/categories/clothes"?true:false)&&"navbarActiveLink"}`}>Clothes</li>
+                            <li onClick={()=>this.handleTechSelection(this.props.getCategories.categories[2].name)} className={`navbarLink ${(pathname==="/categories/tech"?true:false)&&"navbarActiveLink"}`} >Tech</li>
                         </ul>
                         }
                         </div>
 
             </div>
             <div className='middleContainer'>
-                <FontAwesomeIcon onClick={this.toHomePage} className='faShoppingBag' icon={faShoppingBag} size='2x'/>
+                <img src='/images/shopping-bag.png'/>
             </div>
             <div className='rightSideContainer'>
                 <div onClick={this.changeCurrency} className='usdImageContainer'>
-                    <FontAwesomeIcon className='faDollarSign' icon={faDollarSign} size="lg"/>
-                    <FontAwesomeIcon className={`faChevronDown ${this.state.displayCurrency&&"chevronDownActive"}`} icon ={faChevronDown} size='xs'  />
+                    <img className='dollarSign' src='/images/dollar-sign.png'/>
+                    <div className='arrowImageContainer'>
+                    <img  className={`faChevronDown ${this.state.displayCurrency&&"chevronDownActive"}`} src='/images/arrow.png'/>
+                    </div>
                 </div>
                 <div onClick={this.handledisplayMyBag} className='shoppingCartImageContainer'>
                     <div className='cartItemsNumber'> {this.props.cartItems.length}</div>
-                    <FontAwesomeIcon className='faShoppingCart' icon={faShoppingCart} size="lg"/>
+                    <img src='/images/shopping-cart.png'/>
                 </div>
             </div>
             {this.state.displayCurrency&& 

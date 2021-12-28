@@ -59,9 +59,10 @@
   .sizeContainer
   .sizeList
   .sizeListItem.selected {
-  background-color: black;
-  border: solid 2px;
-  color: white;
+  background-color: rgba(166, 166, 166, 0.2);
+  border: 2px solid #a6a6a6;
+
+  color: #a6a6a6;
 }
 
 .myBagContainer

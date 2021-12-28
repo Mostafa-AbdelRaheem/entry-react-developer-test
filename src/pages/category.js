@@ -12,12 +12,22 @@ class Category extends React.Component {
         if(data.loading){
             return(<h1>Loading Data ....</h1>)
         }else{
-            return data.category.products.map(product=>{
-             return (<div className='productContainer' key={product.id}>
-             <Product product={product}/>
-             </div>);
-        })
+            if(data.category!==null){
+
+                return data.category.products.map(product=>{
+                 return (<div className='productContainer' key={product.id}>
+                 <Product product={product}/>
+                 </div>);
+            })
+            }
         }
+    }
+
+    componentDidUpdate=()=>{
+        const {refetch}=this.props.data
+        refetch({
+            categoriesInput: { title: this.props.match.params.category },
+          })
     }
 
 
