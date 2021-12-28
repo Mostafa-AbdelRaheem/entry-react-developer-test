@@ -37,13 +37,14 @@
 .cartProductContainer .infoContainer .sizeContainer .sizeList .sizeListItem {
   margin-right: 10px;
   background-color: white;
-  border: solid 2px;
+  border: solid 1px;
   width: 60px;
   height: 42px;
   text-align: center;
   vertical-align: middle;
   line-height: 45px;
-  cursor: pointer;
+  pointer-events: none;
+  margin-bottom: 5px;
 }
 
 .cartProductContainer
@@ -52,7 +53,7 @@
   .sizeList
   .sizeListItem.selected {
   background-color: black;
-  border: solid 2px;
+  border: solid 3px black;
   color: white;
 }
 

@@ -43,7 +43,7 @@
   .sizeListItem {
   margin-right: 10px;
   background-color: white;
-  border: solid 2px;
+  border: solid px;
   width: 24px;
   height: 24px;
   text-align: center;
@@ -60,7 +60,7 @@
   .sizeList
   .sizeListItem.selected {
   background-color: rgba(166, 166, 166, 0.2);
-  border: 2px solid #a6a6a6;
+  border: 3px solid #a6a6a6;
 
   color: #a6a6a6;
 }

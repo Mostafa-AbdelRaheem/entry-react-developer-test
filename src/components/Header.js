@@ -62,7 +62,7 @@ class Header extends React.Component {
                     <div>
                         {
                         <ul className='categoryList'>
-                            <li onClick={()=>this.handleAllSelection(this.props.getCategories.categories[0].name)} className={`navbarLink ${((pathname==="/categories/all")||(pathname==="/")?true:false)&&"navbarActiveLink"}`} >All</li>
+                            <li onClick={()=>this.handleAllSelection(this.props.getCategories.categories[0].name)} className={`navbarLink ${((pathname==="/categories/all")?true:false)&&"navbarActiveLink"}`} >All</li>
                             <li onClick={()=>this.handleClothesSelection(this.props.getCategories.categories[1].name)} className={`navbarLink ${(pathname==="/categories/clothes"?true:false)&&"navbarActiveLink"}`}>Clothes</li>
                             <li onClick={()=>this.handleTechSelection(this.props.getCategories.categories[2].name)} className={`navbarLink ${(pathname==="/categories/tech"?true:false)&&"navbarActiveLink"}`} >Tech</li>
                         </ul>

@@ -44,7 +44,7 @@
   flex-direction: column;
   justify-content: space-around;
   flex-basis: 35%;
-  height: 88vh;
+  height: 560px;
 }
 
 .productDecriptionContainer .info .brandName h3 {
@@ -52,6 +52,15 @@
   font-weight: 600;
   font-size: 30px;
   line-height: 27px;
+}
+
+.productDecriptionContainer .info p {
+  max-width: 292px;
+  max-height: 103px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  /* line-height: 159.96%; */
 }
 
 .productDecriptionContainer .info .brandName p {
@@ -79,7 +88,7 @@
 .productDecriptionContainer .info .sizeContainer .sizeList .sizeListItem {
   margin: 10px;
   background-color: white;
-  border: solid 2px;
+  border: solid 1px;
   width: 63px;
   height: 45px;
   text-align: center;
@@ -96,7 +105,8 @@
   /* margin: 10px; */
   background-color: black;
   color: white;
-  /* border: solid 2px;
+  border: solid 3px black;
+  /* 
   width: 63px;
   height: 45px;
   text-align: center;
@@ -128,13 +138,4 @@
   width: 292px;
   height: 52px;
   cursor: pointer;
-}
-
-.productDecriptionContainer .info p {
-  max-width: 292px;
-  max-height: 103px;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 159.96%;
 }
