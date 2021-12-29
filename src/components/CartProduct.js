@@ -42,8 +42,8 @@ class CartProduct extends React.Component {
                 {/* leftSide */}
                 <div className='infoContainer'>
                     <div className='brandName'>
-                        <h3>{brand}</h3>
-                        <p>{name}</p>
+                        <h3 className='brandNameHeader'>{brand}</h3>
+                        <p className='brandNameText'>{name}</p>
                     </div>
                     <div className='priceContainer'>
                         <p className='price'><span className='symbol'>{prices[currencyState].currency.symbol}</span>{prices[currencyState].amount}</p>

@@ -7,20 +7,64 @@
   height: 540px;
 }
 
-.myBagContainer h3 {
+.myBagContainer .myBagHeader {
   font-family: Raleway;
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
+  line-height: 160%;
+  margin: 0;
+  min-height: 30px;
 }
-.myBagContainer .cartProductContainer .infoContainer .brandName h3 {
+
+.myBagContainer .myBagHeader .myBagItemHeader {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 160%;
+}
+
+.myBagContainer .productsListContainer {
+  display: flex;
+  flex-direction: column;
+  width: 293px;
+  height: 400px;
+  overflow-y: scroll;
+}
+
+.myBagContainer .productsListContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.myBagContainer .productsListContainer .imageContainer {
+  margin: auto;
+}
+
+.myBagContainer .productsListContainer .cartProductContainer {
+  display: flex;
+  /* flex-direction: column; */
+  width: 293px;
+  margin-bottom: 35px;
+}
+
+.myBagContainer .productsListContainer .cartProductContainer .infoContainer {
+  padding: 7px 0 0 0;
+  min-width: 185px;
+}
+
+.myBagContainer
+  .cartProductContainer
+  .infoContainer
+  .brandName
+  .brandNameHeader {
   font-style: normal;
   font-weight: 300;
   font-size: 16px;
   line-height: 0px;
 }
 
-.myBagContainer .cartProductContainer .infoContainer .brandName p {
+.myBagContainer .cartProductContainer .infoContainer .brandName .brandNameText {
   font-style: normal;
   font-weight: 300;
   font-size: 16px;
@@ -44,7 +88,7 @@
   margin-right: 10px;
   background-color: white;
   border: solid px;
-  width: 24px;
+  width: 30px;
   height: 24px;
   text-align: center;
   vertical-align: middle;
@@ -61,8 +105,11 @@
   .sizeListItem.selected {
   background-color: rgba(166, 166, 166, 0.2);
   border: 3px solid #a6a6a6;
-
   color: #a6a6a6;
+}
+
+.myBagContainer .cartProductContainer .visualContainer {
+  min-width: 100px;
 }
 
 .myBagContainer
@@ -92,22 +139,6 @@
 .myBagContainer .cartProductContainer .visualContainer .mainImageContainer {
   width: 105px;
   height: 137px;
-}
-
-.myBagContainer .productsListContainer {
-  display: flex;
-  flex-direction: column;
-  width: 293px;
-  height: 300px;
-  overflow-y: scroll;
-}
-
-.myBagContainer .productsListContainer::-webkit-scrollbar {
-  display: none;
-}
-
-.myBagContainer .productsListContainer .productContainer {
-  width: 293px;
 }
 
 .myBagContainer .totalCost {

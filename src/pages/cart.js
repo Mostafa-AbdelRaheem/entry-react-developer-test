@@ -1,14 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import CartProduct from './../components/CartProduct';
+import '../styles/cartProduct.css'
 
 class Cart extends React.Component {
     render() { 
         // console.log("Cart Page",this.props)
-        return (<div className='cartContainer'>
-            <h1>Cart</h1>
-            {
-                this.props.cartItems.map((cartItem,index)=>(<div key={index}><CartProduct cartItemProps={cartItem}/></div>))
+        return (
+        <div className='cartContainer'>
+            <h1 className='cartHeader'>Cart</h1>
+            {this.props.cartItems.length===0?<div  className='imageContainer'><img src='/images/empty-bag.png'/></div>:
+                this.props.cartItems.map((cartItem,index)=>(<CartProduct key={index} cartItemProps={cartItem}/>))
             }
 
         </div>

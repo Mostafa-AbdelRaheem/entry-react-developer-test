@@ -54,9 +54,6 @@ class ProductDescription extends React.Component {
         this.setState({attribute1:"Not Attribute"})
     }
 
-    // handleDescription=(str)=>{
-    //     return (str.replace( /(<([^>]+)>)/ig, ''))
-    // }
 
     diplayProduct=()=>{
         const {data} =this.props
@@ -77,12 +74,12 @@ class ProductDescription extends React.Component {
                 {/* rightSide */}
                 <div className='info'>
                     <div className='brandName'>
-                        <h3>{brand}</h3>
-                        <p>{name}</p>
+                        <h3 className='brandNameHeader'>{brand}</h3>
+                        <p className='brandNameText'>{name}</p>
                     </div>
-                    <div className='sizeContainer'>
-                        <p className='sizeHeader'>{attributes.length!==0&&"SIZE:"}</p>
-                        {attributes.length!==0?
+{attributes.length!==0 ?                    <div className='sizeContainer'>
+                        <p className='sizeHeader'>SIZE:</p>
+                        {
                         attributes.map((attribute,index)=>(
                             <Attributes  
                             handleAttributeSelection={this.handleAttribute} 
@@ -90,19 +87,16 @@ class ProductDescription extends React.Component {
                             attribute1={this.state.attribute1}
                             attribute2={this.state.attribute2}
                             attribute={attribute.items}/>))
-                            :""}
-                    </div>
+                            }
+                    </div>:""}
                         
                         
                     <div className='priceContainer'>
-                        <h3>PRICE</h3>
+                        <h3 className='priceHeader'>PRICE</h3>
                         <p className='price'><span className='symbol'>{prices[0].currency.symbol}</span>{prices[0].amount}</p>
                     </div>
                     <button onClick={()=>{this.handleAddToCart(this.props.data.product,this.state.attribute1,this.state.attribute2)}} className='addToCartBtn'>ADD TO CART</button>
-                    <p className='description'>
-                        {/* {this.handleDescription(description)} */}
-                        {description.replace( /(<([^>]+)>)/ig, '')}
-                    </p>
+                    <div className='description' dangerouslySetInnerHTML={{ __html: `${description}` }}/>
                 </div>
             </div>
         )

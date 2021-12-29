@@ -1,8 +1,8 @@
 .productDecriptionContainer {
   display: flex;
   justify-content: space-between;
-  padding: 40px;
-  height: 615px;
+  padding: 0 20px;
+  height: 620px;
   min-width: 920px;
 }
 
@@ -44,30 +44,39 @@
   flex-direction: column;
   justify-content: space-around;
   flex-basis: 35%;
-  height: 560px;
+  height: 600px;
+  overflow-y: scroll;
 }
 
-.productDecriptionContainer .info .brandName h3 {
+.productDecriptionContainer .info::-webkit-scrollbar {
+  display: none;
+}
+.productDecriptionContainer .info .brandName {
+  min-height: 75px;
+  margin-bottom: 25px;
+}
+
+.productDecriptionContainer .info .brandName .brandNameHeader {
+  font-family: Raleway;
   font-style: normal;
   font-weight: 600;
   font-size: 30px;
   line-height: 27px;
+  margin: 0 0 15px 0;
 }
 
-.productDecriptionContainer .info p {
-  max-width: 292px;
-  max-height: 103px;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 159.96%;
-}
-
-.productDecriptionContainer .info .brandName p {
+.productDecriptionContainer .info .brandName .brandNameText {
+  font-family: Raleway;
   font-style: normal;
   font-weight: normal;
   font-size: 30px;
   line-height: 27px;
+  margin: 0 0;
+}
+
+.productDecriptionContainer .info .sizeContainer {
+  min-height: 200px;
+  max-width: 305px;
 }
 
 .productDecriptionContainer .info .sizeContainer .sizeHeader {
@@ -76,6 +85,7 @@
   font-weight: bold;
   font-size: 18px;
   line-height: 18px;
+  margin: 10px 0;
 }
 
 .productDecriptionContainer .info .sizeContainer .sizeList {
@@ -106,21 +116,19 @@
   background-color: black;
   color: white;
   border: solid 3px black;
-  /* 
-  width: 63px;
-  height: 45px;
-  text-align: center;
-  vertical-align: middle;
-  line-height: 45px;
-  cursor: pointer; */
 }
 
-.productDecriptionContainer .info .priceContainer h3 {
+.productDecriptionContainer .info .priceContainer {
+  min-height: 85px;
+}
+
+.productDecriptionContainer .info .priceContainer .priceHeader {
   font-family: Roboto Condensed;
   font-style: normal;
   font-weight: bold;
   font-size: 18px;
   line-height: 18px;
+  margin: 0 0 10px 0;
 }
 
 .productDecriptionContainer .info .priceContainer .price {
@@ -136,6 +144,16 @@
   color: white;
   border: none;
   width: 292px;
-  height: 52px;
+  min-height: 52px;
   cursor: pointer;
+}
+
+.productDecriptionContainer .info .description {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 159.96%;
+  height: 150px;
+  max-width: 305px;
 }

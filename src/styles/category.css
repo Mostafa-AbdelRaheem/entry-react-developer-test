@@ -2,11 +2,13 @@
   margin: 0 20px;
 }
 
-.categoryContainer .productsHeaderContainer h1 {
-  font-size: 18px;
+.categoryContainer .categoryHeaderContainer .categoryHeader {
+  font-family: Raleway;
   font-style: normal;
   font-weight: normal;
   font-size: 42px;
+  line-height: 160%;
+  padding: 0 20px;
 }
 
 .categoryContainer .productsContainer {

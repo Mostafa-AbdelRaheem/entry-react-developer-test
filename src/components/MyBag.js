@@ -28,9 +28,14 @@ class MyBag extends React.Component {
     displayCart=()=>{
         if(this.props.cartItems.length){
             return (<div className='productContainer'>
-                {this.props.cartItems.map((cartItem,index)=>(<div key={index}><CartProduct  cartItemProps={cartItem}/></div>))}
+                {this.props.cartItems.map((cartItem,index)=>(<CartProduct key={index}  cartItemProps={cartItem}/>))}
             </div>        
             )
+        }else{
+            return(
+            <div className='imageContainer'>
+                <img src='/images/empty-bag.png'/>
+            </div>)
         }
     }
 
@@ -40,7 +45,7 @@ class MyBag extends React.Component {
             const cartItems=this.props.cartItems
             const costList = cartItems.map((item)=>(item.prices[currencyState].amount*item.quantity))
             const total = costList.reduce((prev, next) => prev+ next)
-            return <p><span>{cartItems[0].prices[currencyState].currency.symbol}</span>{total}</p>
+            return <p><span>{cartItems[0].prices[currencyState].currency.symbol}</span>{total.toFixed(2)}</p>
         }else{
             return<p>{0}</p>
         }
@@ -49,7 +54,7 @@ class MyBag extends React.Component {
         // console.log("MyBag",this.props)
         return (
         <div ref={this.wrapperRef} className='myBagContainer'>
-            <h3>My Bag, <span>{this.props.cartItems.length}</span> items</h3>
+            <h3 className='myBagHeader'>My Bag, <span className='myBagItemHeader'>{this.props.cartItems.length}{" "}items</span></h3>
             <div className='productsListContainer'>
             {this.displayCart()}
             </div>

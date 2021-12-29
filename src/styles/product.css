@@ -81,11 +81,19 @@
 }
 
 .productsContainer .productContainer .prductInfo .productName {
-  margin-bottom: 5px;
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 160%;
+  margin-bottom: 0px;
 }
 
 .productsContainer .productContainer .prductInfo .price {
-  margin-top: 0;
-  font-weight: 300;
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 500;
   font-size: 18px;
+  line-height: 160%;
+  margin-top: 0;
 }

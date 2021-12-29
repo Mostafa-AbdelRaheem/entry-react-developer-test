@@ -13,7 +13,6 @@ class Category extends React.Component {
             return(<h1>Loading Data ....</h1>)
         }else{
             if(data.category!==null){
-
                 return data.category.products.map(product=>{
                  return (<div className='productContainer' key={product.id}>
                  <Product product={product}/>
@@ -36,8 +35,8 @@ class Category extends React.Component {
         const {category}=this.props.match.params;
         return (
         <div className='categoryContainer'>
-            <div className='productsHeaderContainer'>
-                <h1>{category.toUpperCase()}</h1>
+            <div className='categoryHeaderContainer'>
+                <h1 className='categoryHeader'>{category.toUpperCase()}</h1>
             </div>
             <div className='productsContainer'>
                 {this.displayProducts()}
