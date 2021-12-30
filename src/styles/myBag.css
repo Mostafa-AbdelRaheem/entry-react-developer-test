@@ -61,14 +61,14 @@
   font-style: normal;
   font-weight: 300;
   font-size: 16px;
-  line-height: 0px;
+  line-height: 160%;
 }
 
 .myBagContainer .cartProductContainer .infoContainer .brandName .brandNameText {
   font-style: normal;
   font-weight: 300;
   font-size: 16px;
-  line-height: 0px;
+  line-height: 160%;
 }
 
 .myBagContainer .cartProductContainer .infoContainer .priceContainer .price {
@@ -76,7 +76,7 @@
   font-style: normal;
   font-weight: 500;
   font-size: 16px;
-  line-height: 0px;
+  line-height: 160%;
 }
 
 .myBagContainer

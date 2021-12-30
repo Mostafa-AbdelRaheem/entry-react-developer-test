@@ -4,8 +4,8 @@ import CartProduct from './../components/CartProduct';
 import '../styles/cartProduct.css'
 
 class Cart extends React.Component {
+    
     render() { 
-        // console.log("Cart Page",this.props)
         return (
         <div className='cartContainer'>
             <h1 className='cartHeader'>Cart</h1>

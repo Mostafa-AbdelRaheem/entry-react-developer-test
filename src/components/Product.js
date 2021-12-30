@@ -1,7 +1,5 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import {connect} from 'react-redux';
 import '../styles/product.css'
 
@@ -12,9 +10,8 @@ class Product extends React.Component {
     }
 
     render() { 
-        // console.log("Product props",this.props)
         const {currencyState}=this.props;
-      const { gallery,inStock,name,prices,id}=this.props.product;
+        const { gallery,inStock,name,prices,id}=this.props.product;
         return (
         <div >
             <div className='imageContainer'>

@@ -17,8 +17,6 @@ class ProductDescription extends React.Component {
     hadnleGalleryDisplay=(picUrl)=>{this.setState({galleryPicUrl:picUrl})}
 
     handleAttribute=(item)=>{
-        // this.setState({attribute:itemId})
-        console.log("handle attribute1",item);
         if(item.value.charAt(0)==="#"){
             this.setState({attribute2:item.id})
         }else{
@@ -46,8 +44,6 @@ class ProductDescription extends React.Component {
                 dispatch(addToCart({quantity:1,id,productId:`${id}-${attribute1}-${attribute2}`,name,description,prices,attributes,attribute1,attribute2,gallery,brand}))
 
             }
-            // console.log("Handle add to cart",productProps);
-            // console.log("Handle add to cart name ",selectedAttribute);
         }
     }
     handleEmptyAttribute=()=>{
@@ -58,7 +54,7 @@ class ProductDescription extends React.Component {
     diplayProduct=()=>{
         const {data} =this.props
         if(data.loading){
-            return(<h1>Product is loading</h1>)
+            return(<div className='loader'></div>)
         }else{
         const {attributes,brand,description,gallery,name,prices,id}=this.props.data.product
         return(
@@ -77,7 +73,7 @@ class ProductDescription extends React.Component {
                         <h3 className='brandNameHeader'>{brand}</h3>
                         <p className='brandNameText'>{name}</p>
                     </div>
-{attributes.length!==0 ?                    <div className='sizeContainer'>
+                        {attributes.length!==0 ?<div className='sizeContainer'>
                         <p className='sizeHeader'>SIZE:</p>
                         {
                         attributes.map((attribute,index)=>(
@@ -88,9 +84,7 @@ class ProductDescription extends React.Component {
                             attribute2={this.state.attribute2}
                             attribute={attribute.items}/>))
                             }
-                    </div>:""}
-                        
-                        
+                    </div>:""}        
                     <div className='priceContainer'>
                         <h3 className='priceHeader'>PRICE</h3>
                         <p className='price'><span className='symbol'>{prices[0].currency.symbol}</span>{prices[0].amount}</p>
@@ -105,14 +99,8 @@ class ProductDescription extends React.Component {
     }
 
     render() { 
-        console.log("Product Decription Page",this.props)
-        console.log("Product Decription State Page",this.state)
-        // const {attributes,brand,description,gallery,name}=this.props.data.product
-        // console.log("Product Decription ",brand)
-        // {!this.props.data.loading&&console.log("HElloooooo")}
         return (
         <div className='ProductDescriptionContainer'>
-
             {this.diplayProduct()}
 
         </div>

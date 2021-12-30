@@ -30,10 +30,6 @@ class Header extends React.Component {
         this.props.history.push(`/categories/${categoryName}`);
     }
 
-    toHomePage=()=>{
-        this.props.history.push(`/`);
-    }
-
     changeCurrency=()=>{
         {this.state.displayCurrency?this.setState({displayCurrency:false}):this.setState({displayCurrency:true})}
     }
@@ -49,20 +45,16 @@ class Header extends React.Component {
 
     handleSelectCurrency=(currencyValue)=>{
         const {dispatch} =this.props
-        // console.log("Currency Value",currencyValue)
         this.setState({displayMyBag:false})
         dispatch(selectCurrency({currencyState:currencyValue}))
     }
     
     render() { 
-        console.log("header Props",this.props)
-        console.log("state ",this.state)
         const pathname=this.props.location.pathname
         return (
-            <div>
-
-        <div className='navbarContainer'>
-            <div className='LeftSideContainer'>
+        <div>
+            <div className='navbarContainer'>
+                <div className='LeftSideContainer'>
                     <div>
                         {
                         <ul className='categoryList'>
@@ -72,42 +64,35 @@ class Header extends React.Component {
                         </ul>
                         }
                         </div>
-
-            </div>
-            <div className='middleContainer'>
-                <img src='/images/shopping-bag.png'/>
-            </div>
-            <div className='rightSideContainer'>
-                <div onClick={this.changeCurrency} className='usdImageContainer'>
-                    <img className='dollarSign' src='/images/dollar-sign.png'/>
-                    <div className='arrowImageContainer'>
-                    <img  className={`faChevronDown ${this.state.displayCurrency&&"chevronDownActive"}`} src='/images/arrow.png'/>
+                </div>
+                <div className='middleContainer'>
+                    <img src='/images/shopping-bag.png'/>
+                </div>
+                <div className='rightSideContainer'>
+                    <div onClick={this.changeCurrency} className='usdImageContainer'>
+                        <img className='dollarSign' src='/images/dollar-sign.svg'/>
+                        <div className='arrowImageContainer'>
+                        <img  className={`faChevronDown ${this.state.displayCurrency&&"chevronDownActive"}`} src='/images/arrow.png'/>
+                        </div>
+                    </div>
+                    <div onClick={this.handledisplayMyBag} className='shoppingCartImageContainer'>
+                        <div className='cartItemsNumber'> {this.props.cartItems.length}</div>
+                        <img src='/images/shopping-cart.png'/>
                     </div>
                 </div>
-                <div onClick={this.handledisplayMyBag} className='shoppingCartImageContainer'>
-                    <div className='cartItemsNumber'> {this.props.cartItems.length}</div>
-                    <img src='/images/shopping-cart.png'/>
-                </div>
-            </div>
-            {this.state.displayCurrency&& 
-                <ul className='currencyList'>
-                    {this.props.getCurrency.currencies.map((currency,index)=>(
-                    <li onClick={()=>this.handleSelectCurrency(index)} key={index}><span>{currency.symbol}{" "}</span>{currency.label}</li>
-                    ))}
-                </ul>
-                 }
-            {this.state.displayMyBag&&
-            <div className='myBagContent'>
-                <MyBag   onOutsideClick={this.handleMyBagOutsideClick}/>
-                </div>}
-
-
-
-            </div>
+                {this.state.displayCurrency&& 
+                    <ul className='currencyList'>
+                        {this.props.getCurrency.currencies.map((currency,index)=>(
+                        <li onClick={()=>this.handleSelectCurrency(index)} key={index}><span>{currency.symbol}{" "}</span>{currency.label}</li>
+                        ))}
+                    </ul>
+                    }
                 {this.state.displayMyBag&&
-                <div className='myBagOverLay'>
-                    
+                <div className='myBagContent'>
+                    <MyBag   onOutsideClick={this.handleMyBagOutsideClick}/>
                 </div>}
+            </div>
+            {this.state.displayMyBag&&<div className='myBagOverLay'></div>}
         </div>
         );
     }

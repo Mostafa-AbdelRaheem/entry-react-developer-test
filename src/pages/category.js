@@ -6,11 +6,18 @@ import '../styles/category.css'
 
 
 class Category extends React.Component {
+
+    componentDidUpdate=()=>{
+        const {refetch}=this.props.data
+        refetch({
+            categoriesInput: { title: this.props.match.params.category },
+          })
+    }
+
     displayProducts=()=>{
-        const data=this.props.data;//there is an issue you can use data use the main this.props
-        // console.log("Display Productsssss",data)
+        const data=this.props.data;
         if(data.loading){
-            return(<h1>Loading Data ....</h1>)
+            return(<div className='loader'></div>)
         }else{
             if(data.category!==null){
                 return data.category.products.map(product=>{
@@ -22,16 +29,9 @@ class Category extends React.Component {
         }
     }
 
-    componentDidUpdate=()=>{
-        const {refetch}=this.props.data
-        refetch({
-            categoriesInput: { title: this.props.match.params.category },
-          })
-    }
 
 
     render() { 
-        console.log("Category page",this.props)
         const {category}=this.props.match.params;
         return (
         <div className='categoryContainer'>

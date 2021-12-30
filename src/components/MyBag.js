@@ -1,11 +1,12 @@
 import React,{ createRef } from 'react';
 import CartProduct from './CartProduct';
 import { withRouter } from 'react-router-dom';
-import '../styles/myBag.css'
 import { connect } from 'react-redux';
+import '../styles/myBag.css'
 
 class MyBag extends React.Component {
     wrapperRef = createRef();
+
     componentDidMount() {
         document
           .addEventListener('mousedown', this.handleClickOutside);
@@ -51,7 +52,6 @@ class MyBag extends React.Component {
         }
     }
     render() { 
-        // console.log("MyBag",this.props)
         return (
         <div ref={this.wrapperRef} className='myBagContainer'>
             <h3 className='myBagHeader'>My Bag, <span className='myBagItemHeader'>{this.props.cartItems.length}{" "}items</span></h3>

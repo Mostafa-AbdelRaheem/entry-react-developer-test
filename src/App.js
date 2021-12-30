@@ -1,5 +1,4 @@
 import React from 'react';
-import Home from './pages/Home';
 import { BrowserRouter as Router,Switch,Route,Redirect } from 'react-router-dom';
 import Category from './pages/category';
 import ProductDescription from './pages/productDescription'

@@ -13,7 +13,6 @@ export const currencySlice =createSlice({
     }
 });
 
-// console.log(currencySlice);
 
 export const {selectCurrency}=currencySlice.actions;
 
