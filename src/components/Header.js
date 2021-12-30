@@ -92,7 +92,7 @@ class Header extends React.Component {
             {this.state.displayCurrency&& 
                 <ul className='currencyList'>
                     {this.props.getCurrency.currencies.map((currency,index)=>(
-                    <li onClick={()=>this.handleSelectCurrency(index)} key={index}><span>{currency.symbol}</span>{currency.label}</li>
+                    <li onClick={()=>this.handleSelectCurrency(index)} key={index}><span>{currency.symbol}{" "}</span>{currency.label}</li>
                     ))}
                 </ul>
                  }
