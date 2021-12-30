@@ -9,7 +9,7 @@ class Cart extends React.Component {
         return (
         <div className='cartContainer'>
             <h1 className='cartHeader'>Cart</h1>
-            {this.props.cartItems.length===0?<div  className='imageContainer'><img src='/images/empty-bag.png'/></div>:
+            {this.props.cartItems.length===0?<div  className='imageContainer'><img src='/images/empty-bag.png' alt='empty-bag'/></div>:
                 this.props.cartItems.map((cartItem,index)=>(<CartProduct key={index} cartItemProps={cartItem}/>))
             }
 

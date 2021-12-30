@@ -56,13 +56,13 @@ class ProductDescription extends React.Component {
         if(data.loading){
             return(<div className='loader'></div>)
         }else{
-        const {attributes,brand,description,gallery,name,prices,id}=this.props.data.product
+        const {attributes,brand,description,gallery,name,prices}=this.props.data.product
         return(
             <div className='productDecriptionContainer'>
                 {/* leftSide */}
                 <div className='galleryContainer'>
                     {gallery.map((pic,index)=>(<div onClick={()=>this.hadnleGalleryDisplay(pic)} key={index} className='imageContainer'>
-                        <img src={`${pic}`}/>
+                        <img src={`${pic}`} alt='gallery'/>
                     </div>))}
                 </div>
                 {/* Middle */}

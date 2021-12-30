@@ -18,7 +18,7 @@ class Product extends React.Component {
                 <img src={gallery[0]} alt='' />
             </div>
             <div className='shoppingCartImageContainer'>
-                <img src='/images/product-shopping-cart.png' onClick={()=>this.toProduct(id)} className='faShoppingCart' />
+                <img src='/images/product-shopping-cart.png' alt='product-shopping-cart' onClick={()=>this.toProduct(id)} className='faShoppingCart' />
             </div>
             <div className='prductInfo'>
                     <p className='productName'>{name}</p>

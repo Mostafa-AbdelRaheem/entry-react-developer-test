@@ -31,12 +31,11 @@ class Header extends React.Component {
     }
 
     changeCurrency=()=>{
-        {this.state.displayCurrency?this.setState({displayCurrency:false}):this.setState({displayCurrency:true})}
+        this.state.displayCurrency?this.setState({displayCurrency:false}):this.setState({displayCurrency:true})
     }
 
     handledisplayMyBag=()=>{
-        {this.state.displayMyBag?this.setState({displayMyBag:false}):this.setState({displayMyBag:true})}
-    // {this.setState({displayMyBag:true})}
+        this.state.displayMyBag?this.setState({displayMyBag:false}):this.setState({displayMyBag:true})
     }
 
     handleMyBagOutsideClick=()=>{
@@ -66,18 +65,18 @@ class Header extends React.Component {
                         </div>
                 </div>
                 <div className='middleContainer'>
-                    <img src='/images/shopping-bag.png'/>
+                    <img src='/images/shopping-bag.png'alt='shopping-bag '/>
                 </div>
                 <div className='rightSideContainer'>
                     <div onClick={this.changeCurrency} className='usdImageContainer'>
-                        <img className='dollarSign' src='/images/dollar-sign.svg'/>
+                        <img className='dollarSign' src='/images/dollar-sign.svg' alt='dollar-sign'/>
                         <div className='arrowImageContainer'>
-                        <img  className={`faChevronDown ${this.state.displayCurrency&&"chevronDownActive"}`} src='/images/arrow.png'/>
+                        <img  className={`faChevronDown ${this.state.displayCurrency&&"chevronDownActive"}`} src='/images/arrow.png' alt='arrow'/>
                         </div>
                     </div>
                     <div onClick={this.handledisplayMyBag} className='shoppingCartImageContainer'>
                         <div className='cartItemsNumber'> {this.props.cartItems.length}</div>
-                        <img src='/images/shopping-cart.png'/>
+                        <img src='/images/shopping-cart.png' alt='shopping-cart'/>
                     </div>
                 </div>
                 {this.state.displayCurrency&& 

@@ -20,7 +20,7 @@ class CartProduct extends React.Component {
 
     render() { 
         const {currencyState}=this.props
-        const {attributes,brand,description,gallery,name,prices,id,attribute1,attribute2,quantity}=this.props.cartItemProps
+        const {attributes,brand,gallery,name,prices,attribute1,attribute2,quantity}=this.props.cartItemProps
         return (
             <div className='cartProductContainer'>
                 {/* leftSide */}
@@ -51,7 +51,7 @@ class CartProduct extends React.Component {
                             <button onClick={()=>{this.handleRemoveFromCart(this.props.cartItemProps)}} className='counterBtn'>-</button>
                         </div>
                         <div className='mainImageContainer'>
-                            <img src={gallery[0]}/>
+                            <img src={gallery[0]} alt='gallery'/>
                         </div>
                     </div>
             </div>

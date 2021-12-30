@@ -35,7 +35,7 @@ class MyBag extends React.Component {
         }else{
             return(
             <div className='imageContainer'>
-                <img src='/images/empty-bag.png'/>
+                <img src='/images/empty-bag.png' alt='empty bag'/>
             </div>)
         }
     }
