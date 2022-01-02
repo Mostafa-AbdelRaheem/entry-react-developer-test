@@ -4,8 +4,6 @@
   justify-content: space-between;
   align-items: center;
   height: 60px;
-  /* max-width: 1420px; */
-  /* padding: 0 40px; */
   margin: 0 auto;
 }
 
@@ -26,9 +24,6 @@
   margin-right: 5px;
   text-align: center;
   padding-bottom: 15px;
-  /* font-style: normal;
-  font-weight: 600;
-  font-size: 16px; */
   font-family: Raleway;
   font-style: normal;
   font-weight: 600;

@@ -43,7 +43,6 @@
 
 .myBagContainer .productsListContainer .cartProductContainer {
   display: flex;
-  /* flex-direction: column; */
   width: 293px;
   margin-bottom: 35px;
 }

@@ -112,7 +112,6 @@
   .sizeContainer
   .sizeList
   .sizeListItem.selected {
-  /* margin: 10px; */
   background-color: black;
   color: white;
   border: solid 3px black;

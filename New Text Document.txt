@@ -1,2 +1,0 @@
-install react-icon instead of fontawsom
-install react-redux-loading
