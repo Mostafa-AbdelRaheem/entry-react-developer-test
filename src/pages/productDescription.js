@@ -52,7 +52,7 @@ class ProductDescription extends React.Component {
 
 
     diplayProduct=()=>{
-        const {data} =this.props
+        const {data,currencyState} =this.props
         if(data.loading){
             return(<div className='loader'></div>)
         }else{
@@ -87,7 +87,7 @@ class ProductDescription extends React.Component {
                     </div>:""}        
                     <div className='priceContainer'>
                         <h3 className='priceHeader'>PRICE</h3>
-                        <p className='price'><span className='symbol'>{prices[0].currency.symbol}</span>{prices[0].amount}</p>
+                        <p className='price'><span className='symbol'>{prices[currencyState].currency.symbol}</span>{prices[currencyState].amount}</p>
                     </div>
                     <button onClick={()=>{this.handleAddToCart(this.props.data.product,this.state.attribute1,this.state.attribute2)}} className='addToCartBtn'>ADD TO CART</button>
                     <div className='description' dangerouslySetInnerHTML={{ __html: `${description}` }}/>
@@ -98,7 +98,7 @@ class ProductDescription extends React.Component {
         }
     }
 
-    render() { 
+    render() {
         return (
         <div className='ProductDescriptionContainer'>
             {this.diplayProduct()}
@@ -107,8 +107,13 @@ class ProductDescription extends React.Component {
         );
     }
 }
+
+
+const mapStateToPtops=State=>({
+    currencyState:State.currency.currencyState,
+})
  
-export default connect()(graphql(getProduct,{
+export default connect(mapStateToPtops)(graphql(getProduct,{
     options:(props)=>({
      variables:{
          "id":props.match.params.id
