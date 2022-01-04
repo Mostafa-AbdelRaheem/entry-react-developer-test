@@ -88,7 +88,14 @@
   line-height: 160%;
   margin-bottom: 0px;
 }
-
+.productsContainer .productContainer .prductInfo .productbrand {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 160%;
+  margin: 0px;
+}
 .productsContainer .productContainer .prductInfo .price {
   font-family: Raleway;
   font-style: normal;

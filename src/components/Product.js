@@ -11,7 +11,7 @@ class Product extends React.Component {
 
     render() { 
         const {currencyState}=this.props;
-        const { gallery,inStock,name,prices,id}=this.props.product;
+        const { gallery,inStock,brand,name,prices,id}=this.props.product;
         return (
         <div >
             <div className='imageContainer'>
@@ -22,6 +22,7 @@ class Product extends React.Component {
             </div>
             <div className='prductInfo'>
                     <p className='productName'>{name}</p>
+                    <p className='productbrand'>{brand}</p>
                     <p className='price'><span>{prices[currencyState].currency.symbol}</span>{prices[currencyState].amount}</p>
             </div>
             {!inStock&&<div className='overlay'>
