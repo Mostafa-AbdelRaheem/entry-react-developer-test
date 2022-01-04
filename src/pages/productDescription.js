@@ -29,7 +29,7 @@ class ProductDescription extends React.Component {
         const dispatch = this.props.dispatch;
         if((!attribute1)){
             if(attributes.length===0){
-                dispatch(addToCart({quantity:1,id,productId:`${id}-${attribute1}-${attribute2}`,name,description,prices,attributes,attribute1,attribute2,gallery,brand}))                
+                dispatch(addToCart({quantity:1,id,productId:`${id}-${attribute1}-${attribute2}`,name, description, prices,attributes,attribute1,attribute2,gallery,brand}))                
             }else{
                 alert("Please select an attribute")
             }

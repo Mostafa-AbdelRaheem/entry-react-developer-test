@@ -43,6 +43,7 @@
   height: 35px;
   cursor: pointer;
 }
+
 .navbarContainer .middleContainer img {
   width: 100%;
   height: 100%;
@@ -68,6 +69,7 @@
   height: 100%;
   object-fit: contain;
 }
+
 .navbarContainer .rightSideContainer .arrowImageContainer {
   width: 10px;
   height: 10px;
@@ -79,10 +81,7 @@
   transform: rotate(-90deg);
 }
 
-.navbarContainer
-  .rightSideContainer
-  .arrowImageContainer
-  .faChevronDown.chevronDownActive {
+.navbarContainer .rightSideContainer .arrowImageContainer .faChevronDown.chevronDownActive {
   transform: rotate(90deg);
 }
 
@@ -127,10 +126,8 @@
   width: 100%;
   height: 100%;
 }
-.navbarContainer
-  .rightSideContainer
-  .shoppingCartImageContainer
-  .cartItemsNumber {
+
+.navbarContainer .rightSideContainer .shoppingCartImageContainer .cartItemsNumber {
   position: absolute;
   color: white;
   background-color: black;
