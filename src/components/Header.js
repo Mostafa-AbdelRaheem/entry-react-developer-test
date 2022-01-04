@@ -47,9 +47,21 @@ class Header extends React.Component {
         this.setState({displayMyBag:false})
         dispatch(selectCurrency({currencyState:currencyValue}))
     }
+
+    handleCartItem =()=>{
+        if(this.props.cartItems.length){
+            const {cartItems}=this.props
+            const cartQuanitity = cartItems.map((item)=>(item.quantity))
+            const totalCartQuanitity = cartQuanitity.reduce((prev, next) => prev+ next)
+            return totalCartQuanitity
+        }else{
+            return 0
+        }
+    }
     
     render() { 
         const pathname=this.props.location.pathname
+        console.log("Header prop",this.props)
         return (
         <div>
             <div className='navbarContainer'>
@@ -75,7 +87,7 @@ class Header extends React.Component {
                         </div>
                     </div>
                     <div onClick={this.handledisplayMyBag} className='shoppingCartImageContainer'>
-                        <div className='cartItemsNumber'> {this.props.cartItems.length}</div>
+                        <div className='cartItemsNumber'> {this.handleCartItem()}</div>
                         <img src='/images/shopping-cart.png' alt='shopping-cart'/>
                     </div>
                 </div>
