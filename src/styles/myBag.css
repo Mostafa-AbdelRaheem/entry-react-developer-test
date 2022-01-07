@@ -140,6 +140,15 @@
   height: 137px;
 }
 
+.myBagContainer .cartProductContainer .visualContainer .mainImageContainer .rightArrow {
+  display: none;
+}
+
+.myBagContainer .cartProductContainer .visualContainer .mainImageContainer .leftArrow {
+  display: none;
+}
+
+
 .myBagContainer .totalCost {
   display: flex;
   justify-content: space-between;

@@ -5,6 +5,25 @@ import Attributes from '../components/Attributes'
 import '../styles/cartProduct.css'
 
 class CartProduct extends React.Component {
+    state={
+        imageSlider:0,
+    }
+
+
+    handleImageSliderToRight=()=>{
+        const galleryLength=this.props.cartItemProps.gallery.length;
+        this.setState({imageSlider:((this.state.imageSlider+1)%(galleryLength))})
+    }
+    
+    handleImageSliderToLeft=()=>{
+        const galleryLength=this.props.cartItemProps.gallery.length;
+        if(this.state.imageSlider<=0){
+            this.setState({imageSlider:galleryLength-1})
+        }
+        else{
+            this.setState({imageSlider:(this.state.imageSlider-1)})
+        }
+    }
 
     handleAddToCart=(productProps)=>{
         const dispatch = this.props.dispatch;
@@ -51,7 +70,9 @@ class CartProduct extends React.Component {
                             <button onClick={()=>{this.handleRemoveFromCart(this.props.cartItemProps)}} className='counterBtn'>-</button>
                         </div>
                         <div className='mainImageContainer'>
-                            <img src={gallery[0]} alt='gallery'/>
+                            <img className='gallary' src={gallery[this.state.imageSlider]} alt='gallery'/>
+                            <img onClick={this.handleImageSliderToRight} className='rightArrow' src='/images/right-arrow.png' />
+                            <img onClick={this.handleImageSliderToLeft} className='leftArrow' src='/images/left-arrow.png' />
                         </div>
                     </div>
             </div>
