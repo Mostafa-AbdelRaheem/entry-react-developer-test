@@ -6,6 +6,7 @@
   min-width: 920px;
 }
 
+
 .productDecriptionContainer .galleryContainer {
   display: flex;
   flex-basis: 20%;
@@ -28,8 +29,27 @@
   object-fit: contain;
 }
 .productDecriptionContainer .mainImageContainer {
+  position: relative;
   flex-basis: 35%;
   height: 600px;
+}
+
+.productDecriptionContainer .mainImageContainer .overlay{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 0;
+}
+
+
+.productDecriptionContainer .mainImageContainer .outOfStockText {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: #8d8f9a;
 }
 
 .productDecriptionContainer .mainImageContainer img {
@@ -143,6 +163,14 @@
   width: 292px;
   min-height: 52px;
   cursor: pointer;
+}
+.productDecriptionContainer .info .addToCartBtn.disabled {
+  background-color: gray;
+  color: white;
+  border: none;
+  width: 292px;
+  min-height: 52px;
+  cursor: default;
 }
 
 .productDecriptionContainer .info .description {

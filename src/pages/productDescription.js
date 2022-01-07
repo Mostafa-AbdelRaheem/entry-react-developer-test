@@ -56,7 +56,9 @@ class ProductDescription extends React.Component {
         if(data.loading){
             return(<div className='loader'></div>)
         }else{
-        const {attributes,brand,description,gallery,name,prices}=this.props.data.product
+        const {attributes,brand,description,gallery,name,prices,inStock}=this.props.data.product
+
+        console.log("Pdescription",this.props)
         return(
             <div className='productDecriptionContainer'>
                 {/* leftSide */}
@@ -66,7 +68,13 @@ class ProductDescription extends React.Component {
                     </div>))}
                 </div>
                 {/* Middle */}
-                <div className='mainImageContainer'><img src={`${this.state.galleryPicUrl===''?gallery[0]:this.state.galleryPicUrl}`} alt='pic'></img></div>
+                <div className='mainImageContainer'>
+                    <img src={`${this.state.galleryPicUrl===''?gallery[0]:this.state.galleryPicUrl}`} alt='pic'></img>
+                    
+                {!inStock&&<div className='overlay'>
+                <p className='outOfStockText'>OUT OF STOCK</p>
+                </div>}
+                    </div>
                 {/* rightSide */}
                 <div className='info'>
                     <div className='brandName'>
@@ -89,7 +97,7 @@ class ProductDescription extends React.Component {
                         <h3 className='priceHeader'>PRICE</h3>
                         <p className='price'><span className='symbol'>{prices[currencyState].currency.symbol}</span>{prices[currencyState].amount}</p>
                     </div>
-                    <button onClick={()=>{this.handleAddToCart(this.props.data.product,this.state.attribute1,this.state.attribute2)}} className='addToCartBtn'>ADD TO CART</button>
+                    <button disabled={!inStock} className={`${!inStock?'addToCartBtn disabled':'addToCartBtn'}`}  onClick={()=>{this.handleAddToCart(this.props.data.product,this.state.attribute1,this.state.attribute2)}} >ADD TO CART</button>
                     <div className='description' dangerouslySetInnerHTML={{ __html: `${description}` }}/>
                 </div>
             </div>

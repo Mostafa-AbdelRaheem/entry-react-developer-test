@@ -13,6 +13,9 @@ class Category extends React.Component {
             categoriesInput: { title: this.props.match.params.category },
           })
     }
+    toProduct=(categoryid)=>{
+        this.props.history.push(`/product/${categoryid}`);
+    }
 
     displayProducts=()=>{
         const data=this.props.data;
@@ -21,8 +24,8 @@ class Category extends React.Component {
         }else{
             if(data.category!==null){
                 return data.category.products.map(product=>{
-                 return (<div className='productContainer' key={product.id}>
-                 <Product product={product}/>
+                 return (<div onClick={()=>this.toProduct(product.id)} className='productContainer' key={product.id}>
+                 <Product  product={product}/>
                  </div>);
             })
             }
