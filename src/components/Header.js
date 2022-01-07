@@ -7,6 +7,7 @@ import {getCategories,getCurrency} from '../queries/queries'
 import compose from 'recompose/compose';
 import MyBag from './MyBag';
 import '../styles/Header.css';
+import Currency from './Currency';
 
 
 
@@ -30,22 +31,27 @@ class Header extends React.Component {
         this.props.history.push(`/categories/${categoryName}`);
     }
 
-    changeCurrency=()=>{
-        this.state.displayCurrency?this.setState({displayCurrency:false}):this.setState({displayCurrency:true})
-    }
-
+    
     handledisplayMyBag=()=>{
         this.state.displayMyBag?this.setState({displayMyBag:false}):this.setState({displayMyBag:true})
     }
-
+    
     handleMyBagOutsideClick=()=>{
         this.setState({displayMyBag:false})
     }
 
+    changeCurrency=()=>{
+        this.state.displayCurrency?this.setState({displayCurrency:false}):this.setState({displayCurrency:true})
+    }
+    
     handleSelectCurrency=(currencyValue)=>{
-        const {dispatch} =this.props
-        this.setState({displayMyBag:false})
-        dispatch(selectCurrency({currencyState:currencyValue}))
+            const {dispatch} =this.props
+            dispatch(selectCurrency({currencyState:currencyValue}))
+            this.setState({displayMyBag:false})
+    }
+
+    handleChangeCurrencyOutsideClick=()=>{
+        this.setState({displayCurrency:false})
     }
 
     handleCartItem =()=>{
@@ -61,7 +67,8 @@ class Header extends React.Component {
     
     render() { 
         const pathname=this.props.location.pathname
-        console.log("Header prop",this.props)
+        const {currencies} = this.props.getCurrency
+        const {currencyState}=this.props
         return (
         <div>
             <div className='navbarContainer'>
@@ -81,9 +88,9 @@ class Header extends React.Component {
                 </div>
                 <div className='rightSideContainer'>
                     <div onClick={this.changeCurrency} className='usdImageContainer'>
-                        <img className='dollarSign' src='/images/dollar-sign.svg' alt='dollar-sign'/>
+                        {currencies&&<div className='dollarSign'>{currencies[currencyState].symbol}</div>}                        
                         <div className='arrowImageContainer'>
-                        <img  className={`faChevronDown ${this.state.displayCurrency&&"chevronDownActive"}`} src='/images/arrow.png' alt='arrow'/>
+                            <img  className={`faChevronDown ${this.state.displayCurrency&&"chevronDownActive"}`} src='/images/arrow.png' alt='arrow'/>
                         </div>
                     </div>
                     <div onClick={this.handledisplayMyBag} className='shoppingCartImageContainer'>
@@ -92,11 +99,12 @@ class Header extends React.Component {
                     </div>
                 </div>
                 {this.state.displayCurrency&& 
-                    <ul className='currencyList'>
-                        {this.props.getCurrency.currencies.map((currency,index)=>(
-                        <li onClick={()=>this.handleSelectCurrency(index)} key={index}><span>{currency.symbol}{" "}</span>{currency.label}</li>
-                        ))}
-                    </ul>
+                    <Currency   onOutsideClick={this.handleChangeCurrencyOutsideClick} className="currencyListContainer" onChangeCurrency={this.handleSelectCurrency} currencies={currencies}/>
+                    // <ul className='currencyList'>
+                    //     {this.props.getCurrency.currencies.map((currency,index)=>(
+                    //     <li onClick={()=>this.handleSelectCurrency(index)} key={index}><span>{currency.symbol}{" "}</span>{currency.label}</li>
+                    //     ))}
+                    // </ul>
                     }
                 {this.state.displayMyBag&&
                 <div className='myBagContent'>
