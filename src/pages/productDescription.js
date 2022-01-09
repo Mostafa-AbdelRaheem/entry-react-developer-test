@@ -9,45 +9,46 @@ import Attributes from '../components/Attributes';
 
 class ProductDescription extends React.Component {
     state={
-        attribute1:'',
-        attribute2:'',
+        attribute:{},
         galleryPicUrl:''
     }
 
     hadnleGalleryDisplay=(picUrl)=>{this.setState({galleryPicUrl:picUrl})}
 
-    handleAttribute=(item)=>{
-        if(item.value.charAt(0)==="#"){
-            this.setState({attribute2:item.id})
-        }else{
-            this.setState({attribute1:item.id})
-        }
+    handleAttribute=(selectedValue,id,index)=>{
+        let element= this.state.attribute
+        element={...element,[id]:selectedValue.id}
+
+        console.log("attribute element",element)
+        this.setState({attribute:element})
     }
 
-    handleAddToCart=(productProps,attribute1,attribute2)=>{
+    handleAddToCart=(productProps,attributesSelected)=>{
         const {id,name,description,prices,attributes,gallery,brand}=productProps;
         const dispatch = this.props.dispatch;
-        if((!attribute1)){
+        if((!Object.keys(attributesSelected).length)){
             if(attributes.length===0){
-                dispatch(addToCart({quantity:1,id,productId:`${id}-${attribute1}-${attribute2}`,name, description, prices,attributes,attribute1,attribute2,gallery,brand}))                
+                dispatch(addToCart({quantity:1,id,productId:`${id}-${Object.values(attributesSelected).toString()}`,name, description, prices,attributes,attributesSelected,gallery,brand}))                
             }else{
                 alert("Please select an attribute")
             }
         }else{
-            if(attributes.length===2){
-                if(attribute1&&attribute2){
-                    dispatch(addToCart({quantity:1,id,productId:`${id}-${attribute1}-${attribute2}`,name,description,prices,attributes,attribute1,attribute2,gallery,brand}))
-                }else{
-                    alert("Please select the second attribute")
-                }
-            }else{
-                dispatch(addToCart({quantity:1,id,productId:`${id}-${attribute1}-${attribute2}`,name,description,prices,attributes,attribute1,attribute2,gallery,brand}))
+            dispatch(addToCart({quantity:1,id,productId:`${id}-${Object.values(attributesSelected).toString()}`,name, description, prices,attributes,attributesSelected,gallery,brand}))                
 
-            }
+            // if(attributes.length===2){
+            //     if(attribute1&&attribute2){
+            //         dispatch(addToCart({quantity:1,id,productId:`${id}-${attribute1}-${attribute2}`,name,description,prices,attributes,attribute1,attribute2,gallery,brand}))
+            //     }else{
+            //         alert("Please select the second attribute")
+            //     }
+            // }else{
+            //     dispatch(addToCart({quantity:1,id,productId:`${id}-${attribute1}-${attribute2}`,name,description,prices,attributes,attribute1,attribute2,gallery,brand}))
+
+            // }
         }
     }
     handleEmptyAttribute=()=>{
-        this.setState({attribute1:"Not Attribute"})
+        this.setState({attribute:"Not Attribute"})
     }
 
 
@@ -58,7 +59,8 @@ class ProductDescription extends React.Component {
         }else{
         const {attributes,brand,description,gallery,name,prices,inStock}=this.props.data.product
 
-        console.log("Pdescription",this.props)
+        console.log("Pdescription props",this.props)
+        console.log("Pdescription state",this.state)
         return(
             <div className='productDecriptionContainer'>
                 {/* leftSide */}
@@ -81,23 +83,21 @@ class ProductDescription extends React.Component {
                         <h3 className='brandNameHeader'>{brand}</h3>
                         <p className='brandNameText'>{name}</p>
                     </div>
-                        {attributes.length!==0 ?<div className='sizeContainer'>
-                        <p className='sizeHeader'>SIZE:</p>
-                        {
+                        {attributes.length!==0 ?
                         attributes.map((attribute,index)=>(
                             <Attributes  
                             handleAttributeSelection={this.handleAttribute} 
                             key={index} 
-                            attribute1={this.state.attribute1}
-                            attribute2={this.state.attribute2}
-                            attribute={attribute.items}/>))
-                            }
-                    </div>:""}        
+                            index={index}
+                            attributeSelection={this.state.attribute}
+                            // attribute2={this.state.attribute2}
+                            attribute={attribute}/>))
+                    :""}        
                     <div className='priceContainer'>
                         <h3 className='priceHeader'>PRICE</h3>
                         <p className='price'><span className='symbol'>{prices[currencyState].currency.symbol}</span>{prices[currencyState].amount}</p>
                     </div>
-                    <button disabled={!inStock} className={`${!inStock?'addToCartBtn disabled':'addToCartBtn'}`}  onClick={()=>{this.handleAddToCart(this.props.data.product,this.state.attribute1,this.state.attribute2)}} >ADD TO CART</button>
+                    <button disabled={!inStock} className={`${!inStock?'addToCartBtn disabled':'addToCartBtn'}`}  onClick={()=>{this.handleAddToCart(this.props.data.product,this.state.attribute)}} >ADD TO CART</button>
                     <div className='description' dangerouslySetInnerHTML={{ __html: `${description}` }}/>
                 </div>
             </div>
@@ -107,6 +107,7 @@ class ProductDescription extends React.Component {
     }
 
     render() {
+        console.log("PDP props",this.props)
         return (
         <div className='ProductDescriptionContainer'>
             {this.diplayProduct()}

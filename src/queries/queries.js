@@ -42,6 +42,8 @@ query Product($id:String!){
     description
     category
     attributes{
+      id
+      name
       items{
         displayValue
         value

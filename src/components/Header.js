@@ -47,8 +47,8 @@ class Header extends React.Component {
     handleSelectCurrency=(currencyValue)=>{
             const {dispatch} =this.props
             dispatch(selectCurrency({currencyState:currencyValue}))
-            this.setState({displayMyBag:false})
-    }
+            this.setState({displayCurrency:false})
+        }
 
     handleChangeCurrencyOutsideClick=()=>{
         this.setState({displayCurrency:false})
@@ -100,11 +100,6 @@ class Header extends React.Component {
                 </div>
                 {this.state.displayCurrency&& 
                     <Currency   onOutsideClick={this.handleChangeCurrencyOutsideClick} className="currencyListContainer" onChangeCurrency={this.handleSelectCurrency} currencies={currencies}/>
-                    // <ul className='currencyList'>
-                    //     {this.props.getCurrency.currencies.map((currency,index)=>(
-                    //     <li onClick={()=>this.handleSelectCurrency(index)} key={index}><span>{currency.symbol}{" "}</span>{currency.label}</li>
-                    //     ))}
-                    // </ul>
                     }
                 {this.state.displayMyBag&&
                 <div className='myBagContent'>

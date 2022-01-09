@@ -2,19 +2,30 @@ import React from 'react';
 
 class Attributes extends React.Component {
     render() {
-        const attribute=this.props.attribute
+        const {attribute,index,attributeSelection}=this.props
+        console.log("Attributies props",this.props)
         return (
+            <div className='sizeContainer'>
+                {
+                    attribute&&
+                    <>
+                <p className='sizeHeader'>{attribute.name.toUpperCase()}</p>
                 <ul className='sizeList'>
-                    {attribute.map((item)=>(
+                    {attribute.items.map((item)=>(
                         <li  
-                            style={{backgroundColor:`${item.value}`,display:`${(item.value==="Yes"||item.value==="No")&&"none"}`}} 
-                            onClick={()=>this.props.handleAttributeSelection(item)}
-                            className={`${((this.props.attribute1===item.id)||(this.props.attribute2===item.id))?'sizeListItem selected':'sizeListItem'}`}
+                            style={{backgroundColor:`${item.value}`}} 
+                            onClick={()=>this.props.handleAttributeSelection(item,attribute.id,index)}
+                            className={`${(attributeSelection[`${attribute.id}`]===item.id)?'sizeListItem selected':'sizeListItem'}`}
                             key={item.id}>
                                 {item.value.charAt(0)==="#"?"":item.value}
                         </li>
                     ))}
                 </ul>
+                    </>
+
+                }
+            </div>
+            
         );
     }
 }

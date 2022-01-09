@@ -39,7 +39,7 @@ class CartProduct extends React.Component {
 
     render() { 
         const {currencyState}=this.props
-        const {attributes,brand,gallery,name,prices,attribute1,attribute2,quantity}=this.props.cartItemProps
+        const {attributes,brand,gallery,name,prices,attributesSelected,quantity}=this.props.cartItemProps
         return (
             <div className='cartProductContainer'>
                 {/* leftSide */}
@@ -51,16 +51,14 @@ class CartProduct extends React.Component {
                     <div className='priceContainer'>
                         <p className='price'><span className='symbol'>{prices[currencyState].currency.symbol}</span>{prices[currencyState].amount}</p>
                     </div>
-                    <div className='sizeContainer'>
                         {attributes.length!==0?
                         attributes.map((attribute,index)=>(
                             <Attributes  
                             key={index}
-                            attribute1={attribute1}
-                            attribute2={attribute2}
-                            attribute={attribute.items}/>))
+                            attributeSelection={attributesSelected}
+                            attribute={attribute}/>))
                         :""}
-                    </div>
+                    
                     </div>
                     {/* RightSide */}
                     <div className='visualContainer'>

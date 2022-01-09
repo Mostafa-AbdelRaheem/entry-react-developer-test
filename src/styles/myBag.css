@@ -149,10 +149,24 @@
 }
 
 
-.myBagContainer .totalCost {
+.myBagContainer .totalCostContainer {
   display: flex;
   justify-content: space-between;
   padding: 0 10px;
+}
+.myBagContainer .totalCostContainer .totalCostHeader{
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 18px;
+}
+.myBagContainer .totalCostContainer .totalCost{
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 160%;
 }
 
 .myBagContainer .buttonsContainer {

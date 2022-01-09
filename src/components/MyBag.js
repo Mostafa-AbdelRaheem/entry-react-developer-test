@@ -46,7 +46,7 @@ class MyBag extends React.Component {
             const cartItems=this.props.cartItems
             const costList = cartItems.map((item)=>(item.prices[currencyState].amount*item.quantity))
             const total = costList.reduce((prev, next) => prev+ next)
-            return <p><span>{cartItems[0].prices[currencyState].currency.symbol}</span>{total.toFixed(2)}</p>
+            return <p className='totalCost'><span>{cartItems[0].prices[currencyState].currency.symbol}</span>{total.toFixed(2)}</p>
         }else{
             return<p>{0}</p>
         }
@@ -58,8 +58,8 @@ class MyBag extends React.Component {
             <div className='productsListContainer'>
             {this.displayCart()}
             </div>
-            <div className='totalCost'>
-                <p>Total</p>
+            <div className='totalCostContainer'>
+                <p className='totalCostHeader'>Total</p>
                 {this.handleTotalCost()}
             </div>
             {/* <CartProduct/> */}
